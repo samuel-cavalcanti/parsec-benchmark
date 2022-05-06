@@ -1,0 +1,345 @@
+[PARSEC] Packages to build:  parsec.swaptions
+
+[PARSEC] [========== Building package parsec.swaptions [1] ==========]
+[PARSEC] [---------- Analyzing package parsec.swaptions ----------]
+[PARSEC] parsec.swaptions does not depend on any other packages.
+[PARSEC] [---------- Building package parsec.swaptions ----------]
+[PARSEC] Copying source code of package parsec.swaptions.
+[PARSEC] Running 'env version=pthreads make -j6':
+/usr/bin/g++  -fpermissive -fno-exceptions -O3 -fopt-info-vec-missed -DPARSEC_VERSION=3.0-beta-20150206 -pthread  -DENABLE_THREADS -c CumNormalInv.cpp -o CumNormalInv.o
+/usr/bin/g++  -fpermissive -fno-exceptions -O3 -fopt-info-vec-missed -DPARSEC_VERSION=3.0-beta-20150206 -pthread  -DENABLE_THREADS -c MaxFunction.cpp -o MaxFunction.o
+/usr/bin/g++  -fpermissive -fno-exceptions -O3 -fopt-info-vec-missed -DPARSEC_VERSION=3.0-beta-20150206 -pthread  -DENABLE_THREADS -c RanUnif.cpp -o RanUnif.o
+/usr/bin/g++  -fpermissive -fno-exceptions -O3 -fopt-info-vec-missed -DPARSEC_VERSION=3.0-beta-20150206 -pthread  -DENABLE_THREADS -c nr_routines.c -o nr_routines.o
+/usr/bin/g++  -fpermissive -fno-exceptions -O3 -fopt-info-vec-missed -DPARSEC_VERSION=3.0-beta-20150206 -pthread  -DENABLE_THREADS -c icdf.cpp -o icdf.o
+/usr/bin/g++  -fpermissive -fno-exceptions -O3 -fopt-info-vec-missed -DPARSEC_VERSION=3.0-beta-20150206 -pthread  -DENABLE_THREADS -c HJM_SimPath_Forward_Blocking.cpp -o HJM_SimPath_Forward_Blocking.o
+icdf.cpp: In function ‘void icdf_baseline(int, double*, double*)’:
+icdf.cpp:11:18: warning: ISO C++17 does not allow ‘register’ storage class specifier [-Wregister]
+   11 |   register FTYPE z, r;
+      |                  ^
+icdf.cpp:11:21: warning: ISO C++17 does not allow ‘register’ storage class specifier [-Wregister]
+   11 |   register FTYPE z, r;
+      |                     ^
+icdf.cpp:48:17: missed: couldn't vectorize loop
+icdf.cpp:48:17: missed: not vectorized: control flow in loop.
+icdf.cpp:63:24: missed: statement clobbers memory: _46 = log (_45);
+icdf.cpp:63:15: missed: statement clobbers memory: z_96 = sqrt (_47);
+icdf.cpp:52:24: missed: statement clobbers memory: _4 = log (u_75);
+icdf.cpp:52:15: missed: statement clobbers memory: z_92 = sqrt (_5);
+nr_routines.c:15:9: missed: statement clobbers memory: __builtin_fwrite ("Numerical Recipes run-time error...\n", 1, 36, stderr.0_1);
+nr_routines.c:16:9: missed: statement clobbers memory: fprintf (stderr.1_2, "%s\n", error_text_6(D));
+nr_routines.c:17:9: missed: statement clobbers memory: __builtin_fwrite ("...now exiting to system...\n", 1, 28, stderr.2_3);
+nr_routines.c:18:6: missed: statement clobbers memory: exit (1);
+/usr/bin/g++  -fpermissive -fno-exceptions -O3 -fopt-info-vec-missed -DPARSEC_VERSION=3.0-beta-20150206 -pthread  -DENABLE_THREADS -c HJM.cpp -o HJM.o
+nr_routines.c:48:14: missed: couldn't vectorize loop
+nr_routines.c:48:14: missed: not vectorized: control flow in loop.
+nr_routines.c:38:15: missed: couldn't vectorize loop
+nr_routines.c:38:15: missed: not vectorized: multiple nested loops.
+nr_routines.c:38:18: missed: couldn't vectorize loop
+nr_routines.c:38:18: missed: not vectorized: control flow in loop.
+nr_routines.c:43:17: missed: statement clobbers memory: _34 = sqrt (sum_77);
+nr_routines.c:50:12: missed: statement clobbers memory: __builtin_memset (_112, 0, _115);
+nr_routines.c:99:12: missed: couldn't vectorize loop
+nr_routines.c:99:12: missed: not vectorized: control flow in loop.
+nr_routines.c:101:14: missed: couldn't vectorize loop
+nr_routines.c:102:5: missed: not vectorized: no vectype for stmt: temp_167 = *_109;
+ scalar_type: double
+nr_routines.c:55:6: missed: couldn't vectorize loop
+nr_routines.c:55:6: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+nr_routines.c:91:15: missed: couldn't vectorize loop
+nr_routines.c:91:15: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+nr_routines.c:69:13: missed: couldn't vectorize loop
+nr_routines.c:69:13: missed: not vectorized: control flow in loop.
+nr_routines.c:71:15: missed: couldn't vectorize loop
+nr_routines.c:71:15: missed: not vectorized: control flow in loop.
+nr_routines.c:119:17: missed: statement clobbers memory: v_230 = malloc (_229);
+nr_routines.c:119:17: missed: statement clobbers memory: v_221 = malloc (_229);
+nr_routines.c:119:17: missed: statement clobbers memory: v_212 = malloc (_229);
+nr_routines.c:65:28: missed: statement clobbers memory: __builtin_memset (_366, 0, _367);
+nr_routines.c:77:37: missed: statement clobbers memory: nrerror ("gaussj: Singular Matrix-1");
+nr_routines.c:128:6: missed: statement clobbers memory: free (v_212);
+nr_routines.c:128:6: missed: statement clobbers memory: free (v_221);
+nr_routines.c:128:6: missed: statement clobbers memory: free (v_230);
+nr_routines.c:86:36: missed: statement clobbers memory: nrerror ("gaussj: Singular Matrix-2");
+nr_routines.c:120:17: missed: statement clobbers memory: nrerror ("allocation failure in ivector()");
+CumNormalInv.cpp:58:15: missed: statement clobbers memory: _25 = log (r_51);
+CumNormalInv.cpp:58:10: missed: statement clobbers memory: r_60 = log (_26);
+/usr/bin/g++  -fpermissive -fno-exceptions -O3 -fopt-info-vec-missed -DPARSEC_VERSION=3.0-beta-20150206 -pthread  -DENABLE_THREADS -c HJM_Swaption_Blocking.cpp -o HJM_Swaption_Blocking.o
+/usr/bin/g++  -fpermissive -fno-exceptions -O3 -fopt-info-vec-missed -DPARSEC_VERSION=3.0-beta-20150206 -pthread  -DENABLE_THREADS -c HJM_Securities.cpp -o HJM_Securities.o
+HJM_SimPath_Forward_Blocking.cpp:64:16: missed: couldn't vectorize loop
+HJM_SimPath_Forward_Blocking.cpp:64:16: missed: not vectorized: multiple nested loops.
+HJM_SimPath_Forward_Blocking.cpp:65:19: missed: couldn't vectorize loop
+HJM_SimPath_Forward_Blocking.cpp:67:39: missed: statement clobbers memory: _14 = CumNormalInv (_10);
+HJM_SimPath_Forward_Blocking.cpp:66:21: missed: couldn't vectorize loop
+HJM_SimPath_Forward_Blocking.cpp:67:39: missed: statement clobbers memory: _14 = CumNormalInv (_10);
+HJM_SimPath_Forward_Blocking.cpp:67:39: missed: statement clobbers memory: _14 = CumNormalInv (_10);
+nr_routines.c:119:17: missed: statement clobbers memory: v_12 = malloc (_4);
+nr_routines.c:120:17: missed: statement clobbers memory: nrerror ("allocation failure in ivector()");
+nr_routines.c:128:6: missed: statement clobbers memory: free (_4);
+nr_routines.c:138:19: missed: statement clobbers memory: v_12 = malloc (_4);
+nr_routines.c:139:17: missed: statement clobbers memory: nrerror ("allocation failure in dvector()");
+nr_routines.c:149:6: missed: statement clobbers memory: free (_4);
+HJM_SimPath_Forward_Blocking.cpp:144:16: missed: couldn't vectorize loop
+HJM_SimPath_Forward_Blocking.cpp:144:16: missed: not vectorized: multiple nested loops.
+HJM_SimPath_Forward_Blocking.cpp:145:14: missed: couldn't vectorize loop
+HJM_SimPath_Forward_Blocking.cpp:145:14: missed: not vectorized: multiple nested loops.
+HJM_SimPath_Forward_Blocking.cpp:147:16: missed: couldn't vectorize loop
+HJM_SimPath_Forward_Blocking.cpp:147:16: missed: not vectorized: control flow in loop.
+HJM_SimPath_Forward_Blocking.cpp:150:18: missed: couldn't vectorize loop
+HJM_SimPath_Forward_Blocking.cpp:151:33: missed: not vectorized: no vectype for stmt: _41 = *_40;
+ scalar_type: double
+HJM_SimPath_Forward_Blocking.cpp:64:16: missed: couldn't vectorize loop
+HJM_SimPath_Forward_Blocking.cpp:64:16: missed: not vectorized: multiple nested loops.
+HJM_SimPath_Forward_Blocking.cpp:65:19: missed: couldn't vectorize loop
+HJM_SimPath_Forward_Blocking.cpp:67:39: missed: statement clobbers memory: _152 = CumNormalInv (_148);
+HJM_SimPath_Forward_Blocking.cpp:66:21: missed: couldn't vectorize loop
+HJM_SimPath_Forward_Blocking.cpp:67:39: missed: statement clobbers memory: _152 = CumNormalInv (_148);
+HJM_SimPath_Forward_Blocking.cpp:116:23: missed: couldn't vectorize loop
+HJM_SimPath_Forward_Blocking.cpp:116:23: missed: not vectorized: multiple nested loops.
+HJM_SimPath_Forward_Blocking.cpp:118:23: missed: couldn't vectorize loop
+HJM_SimPath_Forward_Blocking.cpp:121:56: missed: statement clobbers memory: _33 = RanUnif (lRndSeed_126(D));
+HJM_SimPath_Forward_Blocking.cpp:119:25: missed: couldn't vectorize loop
+HJM_SimPath_Forward_Blocking.cpp:121:56: missed: statement clobbers memory: _33 = RanUnif (lRndSeed_126(D));
+HJM_SimPath_Forward_Blocking.cpp:102:16: missed: couldn't vectorize loop
+HJM_SimPath_Forward_Blocking.cpp:102:16: missed: not vectorized: multiple nested loops.
+HJM_SimPath_Forward_Blocking.cpp:103:13: missed: couldn't vectorize loop
+HJM_SimPath_Forward_Blocking.cpp:103:13: missed: not vectorized: control flow in loop.
+HJM_SimPath_Forward_Blocking.cpp:106:15: missed: couldn't vectorize loop
+HJM_SimPath_Forward_Blocking.cpp:107:40: missed: not vectorized: no vectype for stmt: *_22 = 0.0;
+ scalar_type: double
+HJM_SimPath_Forward_Blocking.cpp:93:19: missed: statement clobbers memory: sqrt_ddelt_114 = sqrt (ddelt_104);
+HJM_SimPath_Forward_Blocking.cpp:95:17: missed: statement clobbers memory: pdZ_111 = dmatrix (0, _6, 0, _4);
+HJM_SimPath_Forward_Blocking.cpp:96:17: missed: statement clobbers memory: randZ_113 = dmatrix (0, _6, 0, _4);
+HJM_SimPath_Forward_Blocking.cpp:121:56: missed: statement clobbers memory: _33 = RanUnif (lRndSeed_126(D));
+HJM_SimPath_Forward_Blocking.cpp:67:39: missed: statement clobbers memory: _152 = CumNormalInv (_148);
+HJM_SimPath_Forward_Blocking.cpp:161:14: missed: statement clobbers memory: free_dmatrix (pdZ_111, 0, _6, 0, _4);
+HJM_SimPath_Forward_Blocking.cpp:162:14: missed: statement clobbers memory: free_dmatrix (randZ_113, 0, _6, 0, _4);
+nr_routines.c:173:15: missed: couldn't vectorize loop
+nr_routines.c:173:36: missed: not vectorized, possible dependence between data-refs *_20 and *_24
+nr_routines.c:162:21: missed: statement clobbers memory: m_36 = malloc (_5);
+nr_routines.c:168:25: missed: statement clobbers memory: _11 = malloc (_10);
+nr_routines.c:169:22: missed: statement clobbers memory: nrerror ("allocation failure 2 in dmatrix()");
+nr_routines.c:163:17: missed: statement clobbers memory: nrerror ("allocation failure 1 in dmatrix()");
+nr_routines.c:185:6: missed: statement clobbers memory: free (_8);
+nr_routines.c:186:6: missed: statement clobbers memory: free (_10);
+HJM_Securities.cpp:143:16: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+  143 |         printf("PARSEC Benchmark Suite Version "__PARSEC_XSTRING(PARSEC_VERSION)"\n");
+      |                ^
+HJM.cpp:136:14: missed: couldn't vectorize loop
+HJM.cpp:136:14: missed: not vectorized: control flow in loop.
+HJM.cpp:137:13: missed: couldn't vectorize loop
+HJM.cpp:137:13: missed: not vectorized: control flow in loop.
+HJM.cpp:138:27: missed: statement clobbers memory: _34 = sqrt (_12);
+HJM.cpp:177:11: missed: couldn't vectorize loop
+HJM.cpp:177:11: missed: not vectorized: control flow in loop.
+HJM.cpp:180:12: missed: couldn't vectorize loop
+HJM.cpp:181:36: missed: not vectorized: no vectype for stmt: _47 = *_46;
+ scalar_type: double
+HJM.cpp:164:13: missed: couldn't vectorize loop
+HJM.cpp:164:13: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+HJM.cpp:165:14: missed: couldn't vectorize loop
+HJM.cpp:165:14: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+HJM.cpp:168:13: missed: couldn't vectorize loop
+HJM.cpp:169:21: missed: not vectorized: complicated access pattern.
+HJM.cpp:160:13: missed: couldn't vectorize loop
+HJM.cpp:161:47: missed: not vectorized: no vectype for stmt: _7 = *_6;
+ scalar_type: double
+HJM.cpp:219:12: missed: couldn't vectorize loop
+HJM.cpp:219:12: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+HJM.cpp:225:13: missed: couldn't vectorize loop
+HJM.cpp:225:13: missed: not vectorized: control flow in loop.
+HJM.cpp:228:15: missed: couldn't vectorize loop
+HJM.cpp:229:37: missed: not vectorized: no vectype for stmt: _29 = *_28;
+ scalar_type: double
+HJM.cpp:222:14: missed: couldn't vectorize loop
+HJM.cpp:223:26: missed: statement clobbers memory: _17 = RanUnif (lRndSeed_87(D));
+HJM.cpp:210:11: missed: couldn't vectorize loop
+HJM.cpp:212:20: missed: statement clobbers memory: __builtin_memset (_7, 0, _181);
+HJM.cpp:208:15: missed: statement clobbers memory: pdZ_77 = dvector (0, _3);
+HJM.cpp:212:20: missed: statement clobbers memory: __builtin_memset (_7, 0, _181);
+HJM.cpp:223:26: missed: statement clobbers memory: _17 = RanUnif (lRndSeed_87(D));
+HJM.cpp:223:26: missed: statement clobbers memory: _21 = CumNormalInv (_17);
+HJM.cpp:230:74: missed: statement clobbers memory: _105 = sqrt (ddelt_73);
+HJM.cpp:235:14: missed: statement clobbers memory: free_dvector (pdZ_77, 0, _3);
+HJM.cpp:46:21: missed: statement clobbers memory: pdForward_12 = dvector (0, _2);
+HJM.cpp:47:21: missed: statement clobbers memory: ppdDrifts_15 = dmatrix (0, _6, 0, _4);
+HJM.cpp:48:24: missed: statement clobbers memory: pdTotalDrift_17 = dvector (0, _4);
+HJM.cpp:61:23: missed: statement clobbers memory: iSuccess_22 = HJM_Drifts (pdTotalDrift_17, ppdDrifts_15, iN_9(D), iFactors_13(D), dYears_19(D), ppdFactors_20(D));
+HJM.cpp:71:32: missed: statement clobbers memory: iSuccess_26 = HJM_SimPath_Forward (ppdHJMPath_23(D), iN_9(D), iFactors_13(D), dYears_19(D), pdForward_12, pdTotalDrift_17, ppdFactors_20(D), lRndSeed_24(D));
+HJM.cpp:80:14: missed: statement clobbers memory: free_dvector (pdForward_12, 0, _2);
+HJM.cpp:81:14: missed: statement clobbers memory: free_dmatrix (ppdDrifts_15, 0, _6, 0, _4);
+HJM.cpp:82:14: missed: statement clobbers memory: free_dvector (pdTotalDrift_17, 0, _2);
+HJM.cpp:74:15: missed: statement clobbers memory: free_dvector (pdForward_12, 0, _2);
+HJM.cpp:75:15: missed: statement clobbers memory: free_dmatrix (ppdDrifts_15, 0, _6, 0, _4);
+HJM.cpp:76:15: missed: statement clobbers memory: free_dvector (pdTotalDrift_17, 0, _2);
+HJM.cpp:64:15: missed: statement clobbers memory: free_dvector (pdForward_12, 0, _2);
+HJM.cpp:65:15: missed: statement clobbers memory: free_dmatrix (ppdDrifts_15, 0, _6, 0, _4);
+HJM.cpp:66:15: missed: statement clobbers memory: free_dvector (pdTotalDrift_17, 0, _2);
+HJM_Swaption_Blocking.cpp:152:46: missed: couldn't vectorize loop
+HJM_Swaption_Blocking.cpp:152:46: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+HJM_Swaption_Blocking.cpp:182:17: missed: couldn't vectorize loop
+HJM_Swaption_Blocking.cpp:182:17: missed: not vectorized: control flow in loop.
+HJM_Swaption_Blocking.cpp:184:12: missed: couldn't vectorize loop
+HJM_Swaption_Blocking.cpp:185:37: missed: not vectorized: no vectype for stmt: _78 = *_77;
+ scalar_type: double
+HJM_Swaption_Blocking.cpp:169:17: missed: couldn't vectorize loop
+HJM_Swaption_Blocking.cpp:172:53: missed: failed: evolution of base is not affine.
+HJM_Swaption_Blocking.cpp:158:16: missed: couldn't vectorize loop
+HJM_Swaption_Blocking.cpp:160:64: missed: failed: evolution of base is not affine.
+HJM_Swaption_Blocking.cpp:128:22: missed: couldn't vectorize loop
+HJM_Swaption_Blocking.cpp:128:22: missed: not vectorized: control flow in loop.
+HJM_Swaption_Blocking.cpp:55:39: missed: statement clobbers memory: _7 = log (_6);
+HJM_Swaption_Blocking.cpp:73:23: missed: statement clobbers memory: ppdHJMPath_143 = dmatrix (0, _12, 0, _10);
+HJM_Swaption_Blocking.cpp:74:22: missed: statement clobbers memory: pdForward_145 = dvector (0, _12);
+HJM_Swaption_Blocking.cpp:75:22: missed: statement clobbers memory: ppdDrifts_148 = dmatrix (0, _18, 0, _16);
+HJM_Swaption_Blocking.cpp:76:25: missed: statement clobbers memory: pdTotalDrift_150 = dvector (0, _16);
+HJM_Swaption_Blocking.cpp:106:36: missed: statement clobbers memory: pdPayoffDiscountFactors_152 = dvector (0, _10);
+HJM_Swaption_Blocking.cpp:107:34: missed: statement clobbers memory: pdDiscountingRatePath_154 = dvector (0, _10);
+HJM_Swaption_Blocking.cpp:113:27: missed: statement clobbers memory: pdSwapRatePath_158 = dvector (0, _30);
+HJM_Swaption_Blocking.cpp:114:35: missed: statement clobbers memory: pdSwapDiscountFactors_160 = dvector (0, _30);
+HJM_Swaption_Blocking.cpp:116:26: missed: statement clobbers memory: pdSwapPayoffs_162 = dvector (0, _32);
+HJM_Swaption_Blocking.cpp:127:22: missed: statement clobbers memory: __builtin_memset (pdSwapPayoffs_162, 0, _253);
+HJM_Swaption_Blocking.cpp:133:24: missed: statement clobbers memory: _50 = exp (_324);
+HJM_Swaption_Blocking.cpp:131:24: missed: statement clobbers memory: _41 = exp (_324);
+HJM_Swaption_Blocking.cpp:137:34: missed: statement clobbers memory: iSuccess_169 = HJM_Yield_to_Forward (pdForward_145, iN_131(D), pdYield_167(D));
+HJM_Swaption_Blocking.cpp:142:24: missed: statement clobbers memory: iSuccess_172 = HJM_Drifts (pdTotalDrift_150, ppdDrifts_148, iN_131(D), iFactors_146(D), dYears_132(D), ppdFactors_170(D));
+HJM_Swaption_Blocking.cpp:152:46: missed: statement clobbers memory: iSuccess_182 = HJM_SimPath_Forward_Blocking (ppdHJMPath_143, iN_131(D), iFactors_146(D), dYears_132(D), pdForward_145, pdTotalDrift_150, ppdFactors_170(D), &iRndSeed, BLOCKSIZE_141(D));
+HJM_Swaption_Blocking.cpp:163:43: missed: statement clobbers memory: iSuccess_184 = Discount_Factors_Blocking (pdPayoffDiscountFactors_152, iN_131(D), dYears_132(D), pdDiscountingRatePath_154, BLOCKSIZE_141(D));
+HJM_Swaption_Blocking.cpp:175:43: missed: statement clobbers memory: iSuccess_186 = Discount_Factors_Blocking (pdSwapDiscountFactors_160, iSwapVectorLength_156, dSwapVectorYears_166, pdSwapRatePath_158, BLOCKSIZE_141(D));
+HJM_Swaption_Blocking.cpp:187:24: missed: statement clobbers memory: dSwaptionPayoff_189 = dMax (prephitmp_319, 0.0);
+HJM_Swaption_Blocking.cpp:201:30: missed: statement clobbers memory: _222 = sqrt (_100);
+HJM_Swaption_Blocking.cpp:202:29: missed: statement clobbers memory: _239 = sqrt (_95);
+HJM.cpp:279:11: missed: couldn't vectorize loop
+HJM.cpp:279:11: missed: not vectorized: multiple nested loops.
+HJM.cpp:280:12: missed: couldn't vectorize loop
+HJM.cpp:282:22: missed: not vectorized: no vectype for stmt: pretmp_193 = *_48;
+ scalar_type: double
+HJM.cpp:281:13: missed: couldn't vectorize loop
+HJM.cpp:282:40: missed: not vectorized: no vectype for stmt: _55 = *_54;
+ scalar_type: double
+HJM.cpp:274:11: missed: couldn't vectorize loop
+HJM.cpp:276:20: missed: statement clobbers memory: __builtin_memset (_38, 0, _197);
+HJM.cpp:269:11: missed: couldn't vectorize loop
+HJM.cpp:271:38: missed: not vectorized: data ref analysis failed: _28 = *_27;
+HJM.cpp:270:12: missed: couldn't vectorize loop
+HJM.cpp:271:38: missed: not vectorized: no vectype for stmt: _28 = *_27;
+ scalar_type: double
+HJM.cpp:260:11: missed: couldn't vectorize loop
+HJM.cpp:260:11: missed: not vectorized: control flow in loop.
+HJM.cpp:263:12: missed: couldn't vectorize loop
+HJM.cpp:264:36: missed: not vectorized: no vectype for stmt: _15 = *_14;
+ scalar_type: double
+HJM.cpp:256:22: missed: statement clobbers memory: pdTotalVol_81 = dvector (0, _2);
+HJM.cpp:257:22: missed: statement clobbers memory: ppdWeights_84 = dmatrix (0, _5, 0, _2);
+HJM.cpp:265:23: missed: statement clobbers memory: _120 = sqrt (_151);
+HJM.cpp:276:20: missed: statement clobbers memory: __builtin_memset (_38, 0, _197);
+HJM.cpp:284:14: missed: statement clobbers memory: free_dvector (pdTotalVol_81, 0, _2);
+HJM.cpp:285:14: missed: statement clobbers memory: free_dmatrix (ppdWeights_84, 0, _5, 0, _2);
+HJM.cpp:302:11: missed: couldn't vectorize loop
+HJM.cpp:303:30: missed: not vectorized: no vectype for stmt: _7 = *_6;
+ scalar_type: double
+HJM.cpp:324:20: missed: couldn't vectorize loop
+HJM.cpp:324:20: missed: not vectorized: inner-loop count not invariant.
+HJM.cpp:325:22: missed: couldn't vectorize loop
+HJM.cpp:326:40: missed: statement clobbers memory: _29 = exp (_10);
+HJM.cpp:326:40: missed: statement clobbers memory: _29 = exp (_10);
+HJM.cpp:354:13: missed: couldn't vectorize loop
+HJM.cpp:354:13: missed: not vectorized: inner-loop count not invariant.
+HJM.cpp:355:15: missed: couldn't vectorize loop
+HJM.cpp:356:27: missed: not vectorized: complicated access pattern.
+HJM.cpp:352:13: missed: couldn't vectorize loop
+HJM.cpp:352:45: missed: statement clobbers memory: _19 = exp (_18);
+HJM.cpp:344:20: missed: statement clobbers memory: pdexpRes_46 = dvector (0, _3);
+HJM.cpp:352:45: missed: statement clobbers memory: _19 = exp (_18);
+HJM.cpp:358:14: missed: statement clobbers memory: free_dvector (pdexpRes_46, 0, _3);
+HJM.cpp:390:13: missed: couldn't vectorize loop
+HJM.cpp:390:13: missed: not vectorized: multiple nested loops.
+HJM.cpp:392:15: missed: couldn't vectorize loop
+HJM.cpp:395:70: missed: not vectorized: not suitable for strided load _33 = *_32;
+HJM.cpp:394:17: missed: couldn't vectorize loop
+HJM.cpp:395:43: missed: not vectorized: complicated access pattern.
+HJM.cpp:383:13: missed: couldn't vectorize loop
+HJM.cpp:383:58: missed: statement clobbers memory: _17 = exp (_16);
+HJM.cpp:380:20: missed: statement clobbers memory: pdexpRes_53 = dvector (0, _5);
+HJM.cpp:383:58: missed: statement clobbers memory: _17 = exp (_16);
+HJM.cpp:401:14: missed: statement clobbers memory: free_dvector (pdexpRes_53, 0, _5);
+HJM_Securities.cpp:104:42: missed: couldn't vectorize loop
+HJM_Securities.cpp:104:42: missed: not vectorized: control flow in loop.
+HJM_Securities.cpp:104:42: missed: statement clobbers memory: iSuccess_52 = HJM_Swaption_Blocking (&pdSwaptionPrice, _30, _29, _28, _27, _26, _25, _24, _23, _22, _21, _16, _13, 16, 0);
+HJM_Securities.cpp:110:6: missed: statement clobbers memory: __assert_fail ("iSuccess == 1", "HJM_Securities.cpp", 110, "void* worker(void*)");
+HJM_Securities.cpp:121:10: missed: statement clobbers memory: fprintf (stderr.23_1, "Usage: %s OPTION [OPTIONS]...\n", name_8(D));
+HJM_Securities.cpp:122:10: missed: statement clobbers memory: __builtin_fwrite ("Options:\n", 1, 9, stderr.24_2);
+HJM_Securities.cpp:123:10: missed: statement clobbers memory: __builtin_fwrite ("\t-ns [number of swaptions (should be > number of threads]\n", 1, 58, stderr.25_3);
+HJM_Securities.cpp:124:10: missed: statement clobbers memory: __builtin_fwrite ("\t-sm [number of simulations]\n", 1, 29, stderr.26_4);
+HJM_Securities.cpp:125:10: missed: statement clobbers memory: __builtin_fwrite ("\t-nt [number of threads]\n", 1, 25, stderr.27_5);
+HJM_Securities.cpp:126:10: missed: statement clobbers memory: __builtin_fwrite ("\t-sd [random number seed]\n", 1, 26, stderr.28_6);
+HJM_Securities.cpp:321:23: missed: couldn't vectorize loop
+HJM_Securities.cpp:321:23: missed: not vectorized: number of iterations cannot be computed.
+HJM_Securities.cpp:315:23: missed: couldn't vectorize loop
+HJM_Securities.cpp:315:23: missed: not vectorized: number of iterations cannot be computed.
+HJM_Securities.cpp:298:23: missed: couldn't vectorize loop
+HJM_Securities.cpp:298:23: missed: not vectorized: number of iterations cannot be computed.
+HJM_Securities.cpp:294:23: missed: couldn't vectorize loop
+HJM_Securities.cpp:294:23: missed: not vectorized: number of iterations cannot be computed.
+HJM_Securities.cpp:257:23: missed: couldn't vectorize loop
+HJM_Securities.cpp:257:23: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+HJM_Securities.cpp:275:20: missed: couldn't vectorize loop
+HJM_Securities.cpp:277:50: missed: not vectorized: not suitable for gather load _114 = *_113;
+HJM_Securities.cpp:271:20: missed: couldn't vectorize loop
+HJM_Securities.cpp:272:63: missed: not vectorized: no vectype for stmt: _95 = *_94;
+ scalar_type: double
+HJM_Securities.cpp:160:28: missed: couldn't vectorize loop
+HJM_Securities.cpp:160:28: missed: not vectorized: control flow in loop.
+HJM_Securities.cpp:340:1: missed: statement clobbers memory: saved_stack.89_184 = __builtin_stack_save ();
+HJM_Securities.cpp:143:15: missed: statement clobbers memory: __builtin_puts (&"PARSEC Benchmark Suite Version 3.0-beta-20150206"[0]);
+HJM_Securities.cpp:144:8: missed: statement clobbers memory: fflush (0B);
+HJM_Securities.cpp:160:15: missed: statement clobbers memory: _6 = strcmp ("-sm", _5);
+HJM_Securities.cpp:161:20: missed: statement clobbers memory: _11 = strcmp ("-nt", _5);
+HJM_Securities.cpp:162:20: missed: statement clobbers memory: _16 = strcmp ("-ns", _5);
+HJM_Securities.cpp:163:20: missed: statement clobbers memory: _21 = strcmp ("-sd", _5);
+HJM_Securities.cpp:165:20: missed: statement clobbers memory: fprintf (stderr.33_27, "Error: Unknown option: %s\n", _356);
+HJM_Securities.cpp:166:24: missed: statement clobbers memory: print_usage (_28);
+HJM_Securities.cpp:167:17: missed: statement clobbers memory: exit (1);
+/usr/include/stdlib.h:364:23: missed: statement clobbers memory: _295 = strtol (_25, 0B, 10);
+/usr/include/stdlib.h:364:23: missed: statement clobbers memory: _293 = strtol (_20, 0B, 10);
+/usr/include/stdlib.h:364:23: missed: statement clobbers memory: _291 = strtol (_15, 0B, 10);
+/usr/include/stdlib.h:364:23: missed: statement clobbers memory: _289 = strtol (_10, 0B, 10);
+HJM_Securities.cpp:177:15: missed: statement clobbers memory: printf ("Number of Simulations: %d,  Number of threads: %d Number of swaptions: %d\n", NUM_TRIALS.39_35, nThreads.35_30, nSwaptions.34_29);
+HJM_Securities.cpp:178:53: missed: statement clobbers memory: _36 = RanUnif (&seed);
+HJM_Securities.cpp:193:32: missed: statement clobbers memory: threads_192 = malloc (_44);
+HJM_Securities.cpp:194:19: missed: statement clobbers memory: pthread_attr_init (&pthread_custom_attr);
+HJM_Securities.cpp:213:19: missed: statement clobbers memory: factors_195 = dmatrix (0, _54, 0, _51);
+HJM_Securities.cpp:253:18: missed: statement clobbers memory: _61 = malloc (_60);
+HJM_Securities.cpp:261:56: missed: statement clobbers memory: _68 = RanUnif (&seed);
+HJM_Securities.cpp:263:57: missed: statement clobbers memory: _76 = RanUnif (&seed);
+HJM_Securities.cpp:269:41: missed: statement clobbers memory: _87 = dvector (0, _86);
+HJM_Securities.cpp:274:44: missed: statement clobbers memory: _104 = dmatrix (0, _103, 0, _100);
+HJM_Securities.cpp:293:6: missed: statement clobbers memory: threadIDs.75_230 = __builtin_alloca_with_align (_124, 32);
+HJM_Securities.cpp:296:25: missed: statement clobbers memory: pthread_create (_128, &pthread_custom_attr, worker, _125);
+HJM_Securities.cpp:299:23: missed: statement clobbers memory: pthread_join (_133, 0B);
+HJM_Securities.cpp:302:6: missed: statement clobbers memory: free (threads_192);
+HJM_Securities.cpp:316:18: missed: statement clobbers memory: fprintf (stderr.80_141, "Swaption %d: [SwaptionPrice: %.10lf StdError: %.10lf] \n", i_333, _140, _139);
+HJM_Securities.cpp:322:23: missed: statement clobbers memory: free_dvector (_150, 0, _149);
+HJM_Securities.cpp:323:16: missed: statement clobbers memory: free_dmatrix (_159, 0, _158, 0, _155);
+HJM_Securities.cpp:330:13: missed: statement clobbers memory: free (swaptions.88_161);
+HJM_Securities.cpp:133:5: missed: statement clobbers memory: __builtin_stack_restore (saved_stack.89_184);
+HJM_Securities.cpp:200:10: missed: statement clobbers memory: fprintf (stderr.46_48, "Number of threads must be between 1 and %d.\n", 1024);
+HJM_Securities.cpp:201:7: missed: statement clobbers memory: exit (1);
+HJM_Securities.cpp:190:10: missed: statement clobbers memory: fprintf (stderr.42_42, "Number of threads must be between 1 and %d.\n", 1024);
+HJM_Securities.cpp:191:7: missed: statement clobbers memory: exit (1);
+HJM_Securities.cpp:172:18: missed: statement clobbers memory: __builtin_fwrite ("Error: Fewer swaptions than threads.\n", 1, 37, stderr.36_31);
+HJM_Securities.cpp:173:22: missed: statement clobbers memory: print_usage (_32);
+HJM_Securities.cpp:174:15: missed: statement clobbers memory: exit (1);
+HJM_Securities.cpp:155:22: missed: statement clobbers memory: print_usage (_1);
+HJM_Securities.cpp:156:15: missed: statement clobbers memory: exit (1);
+/usr/include/c++/11.2.0/iostream:74:25: missed: statement clobbers memory: std::ios_base::Init::Init (&__ioinit);
+/usr/include/c++/11.2.0/iostream:74:25: missed: statement clobbers memory: __cxxabiv1::__cxa_atexit (__dt_comp , &__ioinit, &__dso_handle);
+/usr/bin/g++  -fpermissive -fno-exceptions -O3 -fopt-info-vec-missed -DPARSEC_VERSION=3.0-beta-20150206 -pthread   -DENABLE_THREADS CumNormalInv.o MaxFunction.o RanUnif.o nr_routines.o icdf.o HJM_SimPath_Forward_Blocking.o HJM.o HJM_Swaption_Blocking.o HJM_Securities.o   -o swaptions 
+[PARSEC] Running 'env version=pthreads make -j6 install':
+mkdir -p /home/samuel/Downloads/parsec-benchmark/pkgs/apps/swaptions/inst/amd64-linux.gcc/bin
+cp -f swaptions  /home/samuel/Downloads/parsec-benchmark/pkgs/apps/swaptions/inst/amd64-linux.gcc/bin/swaptions 
+[PARSEC]
+[PARSEC] BIBLIOGRAPHY
+[PARSEC]
+[PARSEC] [1] Bienia. Benchmarking Modern Multiprocessors. Ph.D. Thesis, 2011.
+[PARSEC]
+[PARSEC] Done.
