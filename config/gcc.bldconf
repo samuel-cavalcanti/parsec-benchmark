@@ -19,7 +19,7 @@ if [ -z "$M4" ]; then
   export M4=m4
 fi
 if [ -z "$MAKE" ]; then
-  export MAKE=make
+  export MAKE="make -j6"
 fi
 if [ -z "$TARGET_CROSS" ]; then
   export TARGET_CROSS=/usr/bin/
@@ -39,9 +39,9 @@ export RANLIB="${TARGET_CROSS}ranlib"
 export STRIP="${TARGET_CROSS}strip"
 
 # Arguments to use
-export CFLAGS=" $CFLAGS"
-export CXXFLAGS="$CXXFLAGS -fpermissive -fno-exceptions"
-export CPPFLAGS=""
+export CFLAGS=" $CFLAGS -O3 -fopt-info-vec-missed"
+export CXXFLAGS="$CXXFLAGS -fpermissive -fno-exceptions -O3 -fopt-info-vec-missed"
+export CPPFLAGS="-O3 -fopt-info-vec-missed"
 export CXXCPPFLAGS=""
 export LIBS=""
 export EXTRA_LIBS=""
