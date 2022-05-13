@@ -20,15 +20,25 @@ def parser(content: list[str]):
 
     """
 
+    interest_files_names = [
+        'HJM_Securities.cpp',
+        'HJM_Swaption_Blocking.cpp',
+        'HJM_SimPath_Forward_Blocking.cpp',
+        'HJM.cpp',
+        'CumNormalInv.cpp',
+
+    ]
+
     for line in content:
         try:
             data = line.split(':')
             file_name = data[0]
             row = data[1]
             column = data[2]
-            reason = data[4]
+            # reason = data[4]
             # print(data)
-            print(f'{file_name},{row},{column},{reason}')
+            if file_name in interest_files_names:
+                print(f'{file_name},{row},{column}')
         except IndexError as e:
             # print(line)
             # return
