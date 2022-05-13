@@ -1,0 +1,363 @@
+icdf.cpp,48,17, couldn't vectorize loop
+
+icdf.cpp,48,17, not vectorized
+icdf.cpp,63,24, statement clobbers memory
+icdf.cpp,63,15, statement clobbers memory
+icdf.cpp,52,24, statement clobbers memory
+icdf.cpp,52,15, statement clobbers memory
+nr_routines.c,15,9, statement clobbers memory
+nr_routines.c,16,9, statement clobbers memory
+nr_routines.c,17,9, statement clobbers memory
+nr_routines.c,18,6, statement clobbers memory
+nr_routines.c,48,14, couldn't vectorize loop
+
+nr_routines.c,48,14, not vectorized
+nr_routines.c,38,15, couldn't vectorize loop
+
+nr_routines.c,38,15, not vectorized
+nr_routines.c,38,18, couldn't vectorize loop
+
+nr_routines.c,38,18, not vectorized
+nr_routines.c,43,17, statement clobbers memory
+nr_routines.c,50,12, statement clobbers memory
+nr_routines.c,99,12, couldn't vectorize loop
+
+nr_routines.c,99,12, not vectorized
+nr_routines.c,101,14, couldn't vectorize loop
+
+nr_routines.c,102,5, not vectorized
+nr_routines.c,55,6, couldn't vectorize loop
+
+nr_routines.c,55,6, not vectorized
+nr_routines.c,91,15, couldn't vectorize loop
+
+nr_routines.c,91,15, not vectorized
+nr_routines.c,69,13, couldn't vectorize loop
+
+nr_routines.c,69,13, not vectorized
+nr_routines.c,71,15, couldn't vectorize loop
+
+nr_routines.c,71,15, not vectorized
+nr_routines.c,119,17, statement clobbers memory
+nr_routines.c,119,17, statement clobbers memory
+nr_routines.c,119,17, statement clobbers memory
+nr_routines.c,65,28, statement clobbers memory
+nr_routines.c,77,37, statement clobbers memory
+nr_routines.c,128,6, statement clobbers memory
+nr_routines.c,128,6, statement clobbers memory
+nr_routines.c,128,6, statement clobbers memory
+nr_routines.c,86,36, statement clobbers memory
+nr_routines.c,120,17, statement clobbers memory
+CumNormalInv.cpp,58,15, statement clobbers memory
+CumNormalInv.cpp,58,10, statement clobbers memory
+HJM_SimPath_Forward_Blocking.cpp,64,16, couldn't vectorize loop
+
+HJM_SimPath_Forward_Blocking.cpp,64,16, not vectorized
+HJM_SimPath_Forward_Blocking.cpp,65,19, couldn't vectorize loop
+
+HJM_SimPath_Forward_Blocking.cpp,67,39, statement clobbers memory
+HJM_SimPath_Forward_Blocking.cpp,66,21, couldn't vectorize loop
+
+HJM_SimPath_Forward_Blocking.cpp,67,39, statement clobbers memory
+HJM_SimPath_Forward_Blocking.cpp,67,39, statement clobbers memory
+nr_routines.c,119,17, statement clobbers memory
+nr_routines.c,120,17, statement clobbers memory
+nr_routines.c,128,6, statement clobbers memory
+nr_routines.c,138,19, statement clobbers memory
+nr_routines.c,139,17, statement clobbers memory
+nr_routines.c,149,6, statement clobbers memory
+HJM_SimPath_Forward_Blocking.cpp,144,16, couldn't vectorize loop
+
+HJM_SimPath_Forward_Blocking.cpp,144,16, not vectorized
+HJM_SimPath_Forward_Blocking.cpp,145,14, couldn't vectorize loop
+
+HJM_SimPath_Forward_Blocking.cpp,145,14, not vectorized
+HJM_SimPath_Forward_Blocking.cpp,147,16, couldn't vectorize loop
+
+HJM_SimPath_Forward_Blocking.cpp,147,16, not vectorized
+HJM_SimPath_Forward_Blocking.cpp,150,18, couldn't vectorize loop
+
+HJM_SimPath_Forward_Blocking.cpp,151,33, not vectorized
+HJM_SimPath_Forward_Blocking.cpp,64,16, couldn't vectorize loop
+
+HJM_SimPath_Forward_Blocking.cpp,64,16, not vectorized
+HJM_SimPath_Forward_Blocking.cpp,65,19, couldn't vectorize loop
+
+HJM_SimPath_Forward_Blocking.cpp,67,39, statement clobbers memory
+HJM_SimPath_Forward_Blocking.cpp,66,21, couldn't vectorize loop
+
+HJM_SimPath_Forward_Blocking.cpp,67,39, statement clobbers memory
+HJM_SimPath_Forward_Blocking.cpp,116,23, couldn't vectorize loop
+
+HJM_SimPath_Forward_Blocking.cpp,116,23, not vectorized
+HJM_SimPath_Forward_Blocking.cpp,118,23, couldn't vectorize loop
+
+HJM_SimPath_Forward_Blocking.cpp,121,56, statement clobbers memory
+HJM_SimPath_Forward_Blocking.cpp,119,25, couldn't vectorize loop
+
+HJM_SimPath_Forward_Blocking.cpp,121,56, statement clobbers memory
+HJM_SimPath_Forward_Blocking.cpp,102,16, couldn't vectorize loop
+
+HJM_SimPath_Forward_Blocking.cpp,102,16, not vectorized
+HJM_SimPath_Forward_Blocking.cpp,103,13, couldn't vectorize loop
+
+HJM_SimPath_Forward_Blocking.cpp,103,13, not vectorized
+HJM_SimPath_Forward_Blocking.cpp,106,15, couldn't vectorize loop
+
+HJM_SimPath_Forward_Blocking.cpp,107,40, not vectorized
+HJM_SimPath_Forward_Blocking.cpp,93,19, statement clobbers memory
+HJM_SimPath_Forward_Blocking.cpp,95,17, statement clobbers memory
+HJM_SimPath_Forward_Blocking.cpp,96,17, statement clobbers memory
+HJM_SimPath_Forward_Blocking.cpp,121,56, statement clobbers memory
+HJM_SimPath_Forward_Blocking.cpp,67,39, statement clobbers memory
+HJM_SimPath_Forward_Blocking.cpp,161,14, statement clobbers memory
+HJM_SimPath_Forward_Blocking.cpp,162,14, statement clobbers memory
+nr_routines.c,173,15, couldn't vectorize loop
+
+nr_routines.c,173,36, not vectorized, possible dependence between data-refs *_20 and *_24
+
+nr_routines.c,162,21, statement clobbers memory
+nr_routines.c,168,25, statement clobbers memory
+nr_routines.c,169,22, statement clobbers memory
+nr_routines.c,163,17, statement clobbers memory
+nr_routines.c,185,6, statement clobbers memory
+nr_routines.c,186,6, statement clobbers memory
+HJM.cpp,136,14, couldn't vectorize loop
+
+HJM.cpp,136,14, not vectorized
+HJM.cpp,137,13, couldn't vectorize loop
+
+HJM.cpp,137,13, not vectorized
+HJM.cpp,138,27, statement clobbers memory
+HJM.cpp,177,11, couldn't vectorize loop
+
+HJM.cpp,177,11, not vectorized
+HJM.cpp,180,12, couldn't vectorize loop
+
+HJM.cpp,181,36, not vectorized
+HJM.cpp,164,13, couldn't vectorize loop
+
+HJM.cpp,164,13, not vectorized
+HJM.cpp,165,14, couldn't vectorize loop
+
+HJM.cpp,165,14, not vectorized
+HJM.cpp,168,13, couldn't vectorize loop
+
+HJM.cpp,169,21, not vectorized
+HJM.cpp,160,13, couldn't vectorize loop
+
+HJM.cpp,161,47, not vectorized
+HJM.cpp,219,12, couldn't vectorize loop
+
+HJM.cpp,219,12, not vectorized
+HJM.cpp,225,13, couldn't vectorize loop
+
+HJM.cpp,225,13, not vectorized
+HJM.cpp,228,15, couldn't vectorize loop
+
+HJM.cpp,229,37, not vectorized
+HJM.cpp,222,14, couldn't vectorize loop
+
+HJM.cpp,223,26, statement clobbers memory
+HJM.cpp,210,11, couldn't vectorize loop
+
+HJM.cpp,212,20, statement clobbers memory
+HJM.cpp,208,15, statement clobbers memory
+HJM.cpp,212,20, statement clobbers memory
+HJM.cpp,223,26, statement clobbers memory
+HJM.cpp,223,26, statement clobbers memory
+HJM.cpp,230,74, statement clobbers memory
+HJM.cpp,235,14, statement clobbers memory
+HJM.cpp,46,21, statement clobbers memory
+HJM.cpp,47,21, statement clobbers memory
+HJM.cpp,48,24, statement clobbers memory
+HJM.cpp,61,23, statement clobbers memory
+HJM.cpp,71,32, statement clobbers memory
+HJM.cpp,80,14, statement clobbers memory
+HJM.cpp,81,14, statement clobbers memory
+HJM.cpp,82,14, statement clobbers memory
+HJM.cpp,74,15, statement clobbers memory
+HJM.cpp,75,15, statement clobbers memory
+HJM.cpp,76,15, statement clobbers memory
+HJM.cpp,64,15, statement clobbers memory
+HJM.cpp,65,15, statement clobbers memory
+HJM.cpp,66,15, statement clobbers memory
+HJM_Swaption_Blocking.cpp,152,46, couldn't vectorize loop
+
+HJM_Swaption_Blocking.cpp,152,46, not vectorized
+HJM_Swaption_Blocking.cpp,182,17, couldn't vectorize loop
+
+HJM_Swaption_Blocking.cpp,182,17, not vectorized
+HJM_Swaption_Blocking.cpp,184,12, couldn't vectorize loop
+
+HJM_Swaption_Blocking.cpp,185,37, not vectorized
+HJM_Swaption_Blocking.cpp,169,17, couldn't vectorize loop
+
+HJM_Swaption_Blocking.cpp,172,53, failed
+HJM_Swaption_Blocking.cpp,158,16, couldn't vectorize loop
+
+HJM_Swaption_Blocking.cpp,160,64, failed
+HJM_Swaption_Blocking.cpp,128,22, couldn't vectorize loop
+
+HJM_Swaption_Blocking.cpp,128,22, not vectorized
+HJM_Swaption_Blocking.cpp,55,39, statement clobbers memory
+HJM_Swaption_Blocking.cpp,73,23, statement clobbers memory
+HJM_Swaption_Blocking.cpp,74,22, statement clobbers memory
+HJM_Swaption_Blocking.cpp,75,22, statement clobbers memory
+HJM_Swaption_Blocking.cpp,76,25, statement clobbers memory
+HJM_Swaption_Blocking.cpp,106,36, statement clobbers memory
+HJM_Swaption_Blocking.cpp,107,34, statement clobbers memory
+HJM_Swaption_Blocking.cpp,113,27, statement clobbers memory
+HJM_Swaption_Blocking.cpp,114,35, statement clobbers memory
+HJM_Swaption_Blocking.cpp,116,26, statement clobbers memory
+HJM_Swaption_Blocking.cpp,127,22, statement clobbers memory
+HJM_Swaption_Blocking.cpp,133,24, statement clobbers memory
+HJM_Swaption_Blocking.cpp,131,24, statement clobbers memory
+HJM_Swaption_Blocking.cpp,137,34, statement clobbers memory
+HJM_Swaption_Blocking.cpp,142,24, statement clobbers memory
+HJM_Swaption_Blocking.cpp,152,46, statement clobbers memory
+HJM_Swaption_Blocking.cpp,163,43, statement clobbers memory
+HJM_Swaption_Blocking.cpp,175,43, statement clobbers memory
+HJM_Swaption_Blocking.cpp,187,24, statement clobbers memory
+HJM_Swaption_Blocking.cpp,201,30, statement clobbers memory
+HJM_Swaption_Blocking.cpp,202,29, statement clobbers memory
+HJM.cpp,279,11, couldn't vectorize loop
+
+HJM.cpp,279,11, not vectorized
+HJM.cpp,280,12, couldn't vectorize loop
+
+HJM.cpp,282,22, not vectorized
+HJM.cpp,281,13, couldn't vectorize loop
+
+HJM.cpp,282,40, not vectorized
+HJM.cpp,274,11, couldn't vectorize loop
+
+HJM.cpp,276,20, statement clobbers memory
+HJM.cpp,269,11, couldn't vectorize loop
+
+HJM.cpp,271,38, not vectorized
+HJM.cpp,270,12, couldn't vectorize loop
+
+HJM.cpp,271,38, not vectorized
+HJM.cpp,260,11, couldn't vectorize loop
+
+HJM.cpp,260,11, not vectorized
+HJM.cpp,263,12, couldn't vectorize loop
+
+HJM.cpp,264,36, not vectorized
+HJM.cpp,256,22, statement clobbers memory
+HJM.cpp,257,22, statement clobbers memory
+HJM.cpp,265,23, statement clobbers memory
+HJM.cpp,276,20, statement clobbers memory
+HJM.cpp,284,14, statement clobbers memory
+HJM.cpp,285,14, statement clobbers memory
+HJM.cpp,302,11, couldn't vectorize loop
+
+HJM.cpp,303,30, not vectorized
+HJM.cpp,324,20, couldn't vectorize loop
+
+HJM.cpp,324,20, not vectorized
+HJM.cpp,325,22, couldn't vectorize loop
+
+HJM.cpp,326,40, statement clobbers memory
+HJM.cpp,326,40, statement clobbers memory
+HJM.cpp,354,13, couldn't vectorize loop
+
+HJM.cpp,354,13, not vectorized
+HJM.cpp,355,15, couldn't vectorize loop
+
+HJM.cpp,356,27, not vectorized
+HJM.cpp,352,13, couldn't vectorize loop
+
+HJM.cpp,352,45, statement clobbers memory
+HJM.cpp,344,20, statement clobbers memory
+HJM.cpp,352,45, statement clobbers memory
+HJM.cpp,358,14, statement clobbers memory
+HJM.cpp,390,13, couldn't vectorize loop
+
+HJM.cpp,390,13, not vectorized
+HJM.cpp,392,15, couldn't vectorize loop
+
+HJM.cpp,395,70, not vectorized
+HJM.cpp,394,17, couldn't vectorize loop
+
+HJM.cpp,395,43, not vectorized
+HJM.cpp,383,13, couldn't vectorize loop
+
+HJM.cpp,383,58, statement clobbers memory
+HJM.cpp,380,20, statement clobbers memory
+HJM.cpp,383,58, statement clobbers memory
+HJM.cpp,401,14, statement clobbers memory
+HJM_Securities.cpp,104,42, couldn't vectorize loop
+
+HJM_Securities.cpp,104,42, not vectorized
+HJM_Securities.cpp,104,42, statement clobbers memory
+HJM_Securities.cpp,110,6, statement clobbers memory
+HJM_Securities.cpp,121,10, statement clobbers memory
+HJM_Securities.cpp,122,10, statement clobbers memory
+HJM_Securities.cpp,123,10, statement clobbers memory
+HJM_Securities.cpp,124,10, statement clobbers memory
+HJM_Securities.cpp,125,10, statement clobbers memory
+HJM_Securities.cpp,126,10, statement clobbers memory
+HJM_Securities.cpp,321,23, couldn't vectorize loop
+
+HJM_Securities.cpp,321,23, not vectorized
+HJM_Securities.cpp,315,23, couldn't vectorize loop
+
+HJM_Securities.cpp,315,23, not vectorized
+HJM_Securities.cpp,298,23, couldn't vectorize loop
+
+HJM_Securities.cpp,298,23, not vectorized
+HJM_Securities.cpp,294,23, couldn't vectorize loop
+
+HJM_Securities.cpp,294,23, not vectorized
+HJM_Securities.cpp,257,23, couldn't vectorize loop
+
+HJM_Securities.cpp,257,23, not vectorized
+HJM_Securities.cpp,275,20, couldn't vectorize loop
+
+HJM_Securities.cpp,277,50, not vectorized
+HJM_Securities.cpp,271,20, couldn't vectorize loop
+
+HJM_Securities.cpp,272,63, not vectorized
+HJM_Securities.cpp,160,28, couldn't vectorize loop
+
+HJM_Securities.cpp,160,28, not vectorized
+HJM_Securities.cpp,340,1, statement clobbers memory
+HJM_Securities.cpp,143,15, statement clobbers memory
+HJM_Securities.cpp,144,8, statement clobbers memory
+HJM_Securities.cpp,160,15, statement clobbers memory
+HJM_Securities.cpp,161,20, statement clobbers memory
+HJM_Securities.cpp,162,20, statement clobbers memory
+HJM_Securities.cpp,163,20, statement clobbers memory
+HJM_Securities.cpp,165,20, statement clobbers memory
+HJM_Securities.cpp,166,24, statement clobbers memory
+HJM_Securities.cpp,167,17, statement clobbers memory
+HJM_Securities.cpp,177,15, statement clobbers memory
+HJM_Securities.cpp,178,53, statement clobbers memory
+HJM_Securities.cpp,193,32, statement clobbers memory
+HJM_Securities.cpp,194,19, statement clobbers memory
+HJM_Securities.cpp,213,19, statement clobbers memory
+HJM_Securities.cpp,253,18, statement clobbers memory
+HJM_Securities.cpp,261,56, statement clobbers memory
+HJM_Securities.cpp,263,57, statement clobbers memory
+HJM_Securities.cpp,269,41, statement clobbers memory
+HJM_Securities.cpp,274,44, statement clobbers memory
+HJM_Securities.cpp,293,6, statement clobbers memory
+HJM_Securities.cpp,296,25, statement clobbers memory
+HJM_Securities.cpp,299,23, statement clobbers memory
+HJM_Securities.cpp,302,6, statement clobbers memory
+HJM_Securities.cpp,316,18, statement clobbers memory
+HJM_Securities.cpp,322,23, statement clobbers memory
+HJM_Securities.cpp,323,16, statement clobbers memory
+HJM_Securities.cpp,330,13, statement clobbers memory
+HJM_Securities.cpp,133,5, statement clobbers memory
+HJM_Securities.cpp,200,10, statement clobbers memory
+HJM_Securities.cpp,201,7, statement clobbers memory
+HJM_Securities.cpp,190,10, statement clobbers memory
+HJM_Securities.cpp,191,7, statement clobbers memory
+HJM_Securities.cpp,172,18, statement clobbers memory
+HJM_Securities.cpp,173,22, statement clobbers memory
+HJM_Securities.cpp,174,15, statement clobbers memory
+HJM_Securities.cpp,155,22, statement clobbers memory
+HJM_Securities.cpp,156,15, statement clobbers memory
