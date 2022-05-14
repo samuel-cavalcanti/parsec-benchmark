@@ -17,4 +17,4 @@ run_exec="bin/swaptions"
 
 # Arguments to use
 run_args="-ns 128 -sm 1000000 -nt ${NTHREADS}"
-
+# sm == simulations

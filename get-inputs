@@ -22,7 +22,7 @@ if "$sim"; then
   basenames="$basenames parsec-3.0-input-sim.tar.gz"
 fi
 # Huge. Impractical for simulators, intended for real silicon.
-# parsec-3.0-input-native.tar.gz
+basenames="$basenames parsec-3.0-input-native.tar.gz"
 mkdir -p "$outdir"
 for basename in $basenames; do
   if [ ! -f "${download_dir}/${basename}" ]; then

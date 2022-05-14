@@ -6,11 +6,11 @@ EXEC = swaptions
 
 ifdef version
   ifeq "$(version)" "pthreads" 
-    DEF := $(DEF) -DENABLE_THREADS
+    DEF := $(DEF) #-DENABLE_THREADS
     CXXFLAGS := $(CXXFLAGS) -pthread
   endif
   ifeq "$(version)" "tbb"
-    DEF := $(DEF) -DENABLE_THREADS -DTBB_VERSION
+    DEF := $(DEF) #-DENABLE_THREADS -DTBB_VERSION
     LIBS := $(LIBS) -ltbb
   endif
 endif
