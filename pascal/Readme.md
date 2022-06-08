@@ -63,3 +63,65 @@ e executei o script
 ```
 
 gerando o arquivo [swaptions.json](swaptions.json)
+
+
+## Mudança para o OpenMP
+
+possivelmente teremos que mudar a função worker :
+```c++
+void * worker(void *arg){// o arg é o Thread_id
+  int tid = *((int *)arg);
+  FTYPE pdSwaptionPrice[2];
+
+  int beg, end, chunksize;
+  if (tid < (nSwaptions % nThreads)) {
+    chunksize = nSwaptions/nThreads + 1;
+    beg = tid * chunksize;
+    end = (tid+1)*chunksize;
+  } else {
+    chunksize = nSwaptions/nThreads;
+    int offsetThread = nSwaptions % nThreads;
+    int offset = offsetThread * (chunksize + 1);
+    beg = offset + (tid - offsetThread) * chunksize;
+    end = offset + (tid - offsetThread + 1) * chunksize;
+  }
+
+  if(tid == nThreads -1 )
+    end = nSwaptions;
+
+  for(int i=beg; i < end; i++) {
+     int iSuccess = HJM_Swaption_Blocking(pdSwaptionPrice,  swaptions[i].dStrike, 
+                                       swaptions[i].dCompounding, swaptions[i].dMaturity, 
+                                       swaptions[i].dTenor, swaptions[i].dPaymentInterval,
+                                       swaptions[i].iN, swaptions[i].iFactors, swaptions[i].dYears, 
+                                       swaptions[i].pdYield, swaptions[i].ppdFactors,
+                                       swaption_seed+i, NUM_TRIALS, BLOCK_SIZE, 0);
+     assert(iSuccess == 1);
+     swaptions[i].dSimSwaptionMeanPrice = pdSwaptionPrice[0];
+     swaptions[i].dSimSwaptionStdError = pdSwaptionPrice[1];
+   }
+
+   return NULL;
+}
+```
+
+e laço for que inicializa a threads
+
+```c++
+	int threadIDs[nThreads];
+        for (i = 0; i < nThreads; i++) {
+          threadIDs[i] = i;
+          pthread_create(&threads[i], &pthread_custom_attr, worker, &threadIDs[i]);
+        }
+        for (i = 0; i < nThreads; i++) {
+          pthread_join(threads[i], NULL);
+        }
+
+	free(threads);
+```
+
+Ambos encontrados no arquivo [HJM_Securities.cpp](../pkgs/apps/swaptions/src/HJM_Securities.cpp)
+
+
+## Referências
+https://ppc.cs.aalto.fi/ch2/openmp/
