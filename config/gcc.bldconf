@@ -39,9 +39,9 @@ export RANLIB="${TARGET_CROSS}ranlib"
 export STRIP="${TARGET_CROSS}strip"
 
 # Arguments to use
-export CFLAGS=" $CFLAGS -O3 -fopt-info-vec-missed"
-export CXXFLAGS="$CXXFLAGS -fpermissive -fno-exceptions -O3 -fopt-info-vec-missed"
-export CPPFLAGS="-O3 -fopt-info-vec-missed"
+export CFLAGS=" $CFLAGS -O3"
+export CXXFLAGS="$CXXFLAGS -fpermissive -fno-exceptions -O3"
+export CPPFLAGS="-O3 "
 export CXXCPPFLAGS=""
 export LIBS=""
 export EXTRA_LIBS=""
