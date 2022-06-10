@@ -7,64 +7,6 @@ até o momento eu
 baixei o pascalanalyzer no repositório https://gitlab.com/lappsufrn/pascal-releases e coloquei na sub pasta pascal-releases.
 Adicionei no .**gitignore** essa pasta, pois não sei quando a licença do software em ter uma copia nesse repositório.   
 
-## compilei o swaptions usando o pascal
-
-Modifiquei o arquivo Makefile para habilitar a lib pthreads
-limpei a antiga compilação com os comandos:
-```shell
-parsecmgmt -a fullclean -p all
-parsecmgmt -a uninstall -p all
-```
-compilei com o swaptions:
-
-```shell
-parsecmgmt -a build -p swaptions
-```
-
-## Copiei o executável para a pasta pascal e seus argumentos
-
-A compilação gera um arquivo executável chamado __swaptions__ na pasta __inst__.
-Copiei o arquivo __swaptions__ e analizei os arquivos:
-
-- [simsmall.runconf](../pkgs/apps/swaptions/parsec/simsmall.runconf)
-
-- [simmedium.runconf](../pkgs/apps/swaptions/parsec/simmedium.runconf)
-
-- [simlarge.runconf](../pkgs/apps/swaptions/parsec/simlarge.runconf)
-
-- [native.runconf](../pkgs/apps/swaptions/parsec/native.runconf)
-
-criando a primeira parte do shell script [run_parscal.sh](run_parscal.sh)
-
-## finalizei o run_parscal.sh com informações da vídeo aula
-
-Assistindo a vídeo aula, entendi que :
-
-### o parâmetro **-c (core)**
-especifica em qual core a aplicação sera executada, no nosso caso
-quero que a aplicação utilize todos os cores, sem nenhuma limitação, por tanto não foi passado esse parâmetro 
-
-### o parâmetro **-i (inputs)**
-**-i INPUTS** ou **--ipts INPUTS** especifica os argumentos de entrada da aplicação swaptions, por tanto concatenei todas as entradas: simsmall, simmedium, simlarge, native no parâmetro
-**--ipts**, sendo que como tenho  8 threads, em todos os parâmetros (simsmall, simmedium, simlarge, native) , foi passado **NTHREADS=8**
-
-![aula_remota_exemplo_pascalanalyzer](aula_remota_exemplo_pascalanalyzer.png)
-
-## teste na minha máquina
-
-Apos criar o script [run_parscal.sh](run_parscal.sh), fui na
-pasta **pascal-releases**, e adicionei o pascalanalyzer no meu ambiente:
-```zsh
-source pascal-releases/env.sh 
-```
-e executei o script
-```zsh
-./run_parscal.sh
-```
-
-gerando o arquivo [swaptions.json](swaptions.json)
-
-
 ## Mudança para o OpenMP
 
 ### Alterado o Makefile
@@ -93,7 +35,7 @@ endif
 ```
 
 ### Adicionado novas linhas de código
-
+No arquivo [HJM_Securities.cpp](../pkgs/apps/swaptions/src/HJM_Securities.cpp)
 Com o define **OPENMP_VERSION**, foi incluído a lib **#include <omp.h>**
 
 ```c++
@@ -159,19 +101,156 @@ para **openmp**
 
 ## Compilação e testes iniciais
 
-Sabendo que o porte para OpenMP está configurado com o parsec,então para a compilação do projeto usando OpenMP é usando a linha de comando:
+### compilei o swaptions usando o pascal
 
-```shell
+```bash
+parsecmgmt -a fullclean -p all
+parsecmgmt -a uninstall -p all
+```
+compilei com o swaptions com pthreads
+
+```bash
+parsecmgmt -a build -p swaptions # sabendo que a compilação padrÃo é com pthreads
+```
+
+Sabendo que o porte para OpenMP está configurado com o parsec, então para a compilação do projeto usando OpenMP é usando a linha de comando:
+
+```bash
 parsecmgmt -a build -c gcc-openmp -p swaptions
 ```
 
 Para execução de do projeto usando o openmp, é necessário passar o
 parâmetro **-c gcc-openmp**, um exemplo de comando seria assim:
 
-```shell
+```bash
 parsecmgmt -a run -p swaptions -i simsmall -c gcc-openmp -n 8
 ```
 no exemplo a cima o swaptions é executado usando o os dados de entrada simsmall e passando o número de threads igual a 8, **-n 8**.
+
+Também é testado a compilação com pthreads:
+```bash
+parsecmgmt -a run -p swaptions -i simsmall -n 8
+```
+
+tendo os dois executáveis tanto com o pthreads quando OpenMP, foi copiado os dois
+executáveis para essa pasta **pascal** e renomeado os executáveis com **swaptions-pthreads**  e **swaptions-openmp**, ambos executáveis serão utilizados
+para a criação de um script.
+
+
+## Gerando o script run_parscal.sh
+
+A compilação gera um arquivo executável chamado __swaptions__ na pasta __inst__.
+Copiei o arquivo __swaptions__ e analizei os arquivos:
+
+- [simsmall.runconf](../pkgs/apps/swaptions/parsec/simsmall.runconf)
+
+- [simmedium.runconf](../pkgs/apps/swaptions/parsec/simmedium.runconf)
+
+- [simlarge.runconf](../pkgs/apps/swaptions/parsec/simlarge.runconf)
+
+- [native.runconf](../pkgs/apps/swaptions/parsec/native.runconf)
+
+criando a primeira parte do shell script [run_parscal.sh](run_parscal.sh).
+
+```sh
+# simsmall
+simsmall="-ns 32 -sm 10000 -nt ${NTHREADS}"
+
+# simmedium
+simmedium="-ns 64 -sm 20000 -nt ${NTHREADS}"
+
+#simlarge
+simlarge="-ns 96 -sm 40000 -nt ${NTHREADS}"
+
+#native
+native="-ns 128 -sm 1000000 -nt ${NTHREADS}"
+```
+Nó entanto sabendo que o número máximo de threads que teremos que testar é 32 e o número de simulações tem que ser maior ou igual ao número  de threads, colocamos a menor simulação (**simsmall**) sendo sendo 32 e fomos somando em 32, ou seja: 32, 64,96,128. 
+
+## finalizei o run_parscal.sh com informações da vídeo aula
+
+Assistindo a vídeo aula, entendi que :
+
+### o parâmetro **-c (core)**
+especifica em qual core a aplicação sera executada, no nosso caso
+quero que a aplicação utilize todos os cores ou threads da minha máquina.
+
+### o parâmetro **-i (inputs)**
+**-i INPUTS** ou **--ipts INPUTS** especifica os argumentos de entrada da aplicação swaptions, por tanto concatenei todas as entradas: simsmall, simmedium, simlarge, native no parâmetro
+**--ipts**, sendo que como tenho  8 threads, em todos os parâmetros (simsmall, simmedium, simlarge, native)
+
+![aula_remota_exemplo_pascalanalyzer](aula_remota_exemplo_pascalanalyzer.png)
+
+### Número de threads
+
+Sabendo que internamente o **pascalanalyzer**, substitui o parâmetro \_\_nt\_\_ pelo números de threads a ser passado
+para a aplicação então:
+
+```bash
+# Execute esse script depois de instanciar o pascalanalizer
+
+NTHREADS="__nt__" 
+# segundo frankson, tenho que passar esse parâmetro  __nt__
+# para os cores.
+....
+
+....
+# tenho 8 threads, portanto
+MY_CORES=8;
+
+pascalanalyzer -c 1:$MY_CORES --ipts "$simsmall,$simmedium,$simlarge,$native" "./swaptions" -o "swaptions.json"
+```
+Dessa forma, a cada execução do swaptions, o pascalanalyzer vai subsistir, o  \_\_nt\_\_ pelo número de threads a ser analisado,
+exemplo:
+
+```bash
+pascalanalyzer -c 1:$MY_CORES --ipts "$simsmall,$simmedium,$simlarge,$native" "./swaptions" -o "swaptions.json"
+# na interação 1:1 (1 core, simsmall) vira
+
+./swaptions -ns 32 -sm 10000 -nt "__nt__"
+# se transforma em
+./swaptions -ns 32 -sm 10000 -nt 1
+
+# na interação 1:2 (1 core, simmedium) vira
+./swaptions -ns 64 -sm 20000 -nt "__nt__"
+# se transforma em
+./swaptions -ns 64 -sm 20000 -nt 1
+
+# na interação 1:3 (1 core, simlarge) vira
+./swaptions -ns 96 -sm 40000 -nt "__nt__"
+# se transforma em
+./swaptions -ns 96 -sm 40000 -nt 1
+```
+e assim vai até a aplicação ser executada
+com entre 1 até 32 cores, caso executado no super computador
+ou entre 1 até 8 cores, caso rodado na minha máquina.
+
+## teste na minha máquina
+Sabendo que temos que testar tanto com pthreads quando
+quando openmp, no final  do script [run_parscal.sh](run_parscal.sh), são executados 2 vezes o pascalanalyzer:
+
+```bash
+pascalanalyzer -c 1:$MY_CORES --ipts "$simsmall,$simmedium,$simlarge,$native" "./swaptions-pthreads" -o "swaptions-pthreads.json"
+pascalanalyzer -c 1:$MY_CORES --ipts "$simsmall,$simmedium,$simlarge,$native" "./swaptions-openmp" -o "swaptions-openmp.json"
+``` 
+O primeiro é analizado o pthreads e segundo é analizado o openmp. 
+
+Apos criar o script [run_parscal.sh](run_parscal.sh), fui na
+pasta **pascal-releases**, e adicionei o pascalanalyzer no meu ambiente:
+
+```bash
+source pascal-releases/env.sh 
+```
+
+e executei o script
+
+```bash
+# adicionar permissão de execução
+chmod +x ./run_parscal.sh
+./run_parscal.sh # pode ir tomar um ☕
+```
+
+gerando os arquivos **swaptions-pthreads.json** e **swaptions-openmp.json**
 
 
 ## Referências
