@@ -1,6 +1,33 @@
-# Analizando dados com pascalanalyzer
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-até o momento eu
+- [Analisando dados com pascalanalyzer](#analisando-dados-com-pascalanalyzer)
+  - [pascalanalyzer](#pascalanalyzer)
+  - [Mudança para o OpenMP](#mudan%C3%A7a-para-o-openmp)
+    - [Alterado o Makefile](#alterado-o-makefile)
+    - [Adicionado novas linhas de código](#adicionado-novas-linhas-de-c%C3%B3digo)
+  - [integração com parsec](#integra%C3%A7%C3%A3o-com-parsec)
+  - [Compilação e testes iniciais](#compila%C3%A7%C3%A3o-e-testes-iniciais)
+    - [Limpando compilação antiga](#limpando-compila%C3%A7%C3%A3o-antiga)
+    - [Compilando com pthreads](#compilando-com-pthreads)
+    - [Compilando com OpenMP](#compilando-com-openmp)
+    - [Testando compilações](#testando-compila%C3%A7%C3%B5es)
+  - [Gerando o script run_parscal.sh](#gerando-o-script-run_parscalsh)
+    - [run_parscal.sh  informações da vídeo aula](#run_parscalsh--informa%C3%A7%C3%B5es-da-v%C3%ADdeo-aula)
+        - [o parâmetro **-c (core)**](#o-par%C3%A2metro--c-core)
+        - [o parâmetro **-i (inputs)**](#o-par%C3%A2metro--i-inputs)
+    - [Número de threads, propriedades fora da vídeo aula](#n%C3%BAmero-de-threads-propriedades-fora-da-v%C3%ADdeo-aula)
+  - [teste na minha máquina](#teste-na-minha-m%C3%A1quina)
+  - [Resultados](#resultados)
+- [Conclusão](#conclus%C3%A3o)
+  - [Referências](#refer%C3%AAncias)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+# Analisando dados com pascalanalyzer
+
+
 
 ## pascalanalyzer
 
@@ -36,7 +63,7 @@ endif
 
 ### Adicionado novas linhas de código
 No arquivo [HJM_Securities.cpp](../pkgs/apps/swaptions/src/HJM_Securities.cpp)
-Com o define **OPENMP_VERSION**, foi incluído a lib **#include <omp.h>**
+Com o define **OPENMP_VERSION**, foi incluído a lib **#include \<omp.h\>**
 
 ```c++
 #ifdef ENABLE_THREADS
@@ -101,17 +128,21 @@ para **openmp**
 
 ## Compilação e testes iniciais
 
-### compilei o swaptions usando o pascal
+### Limpando compilação antiga
 
 ```bash
 parsecmgmt -a fullclean -p all
 parsecmgmt -a uninstall -p all
 ```
+
+### Compilando com pthreads
 compilei com o swaptions com pthreads
 
 ```bash
 parsecmgmt -a build -p swaptions # sabendo que a compilação padrÃo é com pthreads
 ```
+
+### Compilando com OpenMP
 
 Sabendo que o porte para OpenMP está configurado com o parsec, então para a compilação do projeto usando OpenMP é usando a linha de comando:
 
@@ -121,6 +152,8 @@ parsecmgmt -a build -c gcc-openmp -p swaptions
 
 Para execução de do projeto usando o openmp, é necessário passar o
 parâmetro **-c gcc-openmp**, um exemplo de comando seria assim:
+
+### Testando compilações
 
 ```bash
 parsecmgmt -a run -p swaptions -i simsmall -c gcc-openmp -n 8
@@ -167,21 +200,21 @@ native="-ns 128 -sm 1000000 -nt ${NTHREADS}"
 ```
 Nó entanto sabendo que o número máximo de threads que teremos que testar é 32 e o número de simulações tem que ser maior ou igual ao número  de threads, colocamos a menor simulação (**simsmall**) sendo sendo 32 e fomos somando em 32, ou seja: 32, 64,96,128. 
 
-## finalizei o run_parscal.sh com informações da vídeo aula
+### run_parscal.sh  informações da vídeo aula
 
 Assistindo a vídeo aula, entendi que :
 
-### o parâmetro **-c (core)**
+##### o parâmetro **-c (core)**
 especifica em qual core a aplicação sera executada, no nosso caso
 quero que a aplicação utilize todos os cores ou threads da minha máquina.
 
-### o parâmetro **-i (inputs)**
+##### o parâmetro **-i (inputs)**
 **-i INPUTS** ou **--ipts INPUTS** especifica os argumentos de entrada da aplicação swaptions, por tanto concatenei todas as entradas: simsmall, simmedium, simlarge, native no parâmetro
 **--ipts**, sendo que como tenho  8 threads, em todos os parâmetros (simsmall, simmedium, simlarge, native)
 
 ![aula_remota_exemplo_pascalanalyzer](aula_remota_exemplo_pascalanalyzer.png)
 
-### Número de threads
+### Número de threads, propriedades fora da vídeo aula
 
 Sabendo que internamente o **pascalanalyzer**, substitui o parâmetro \_\_nt\_\_ pelo números de threads a ser passado
 para a aplicação então:
@@ -251,6 +284,12 @@ chmod +x ./run_parscal.sh
 ```
 
 gerando os arquivos **swaptions-pthreads.json** e **swaptions-openmp.json**
+
+## Resultados
+- Criar gráficos com https://pascalsuite.imd.ufrn.br/
+- discutir os gráficos
+
+# Conclusão
 
 
 ## Referências
