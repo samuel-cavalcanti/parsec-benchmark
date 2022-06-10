@@ -5,6 +5,11 @@ INCLUDE =
 EXEC = swaptions 
 
 ifdef version
+  ifeq  "$(version)" "openmp" 
+	DEF := $(DEF) -DENABLE_THREADS -DOPENMP_VERSION
+	CXXFLAGS := $(CXXFLAGS) -fopenmp
+  endif
+
   ifeq "$(version)" "pthreads" 
     DEF := $(DEF) -DENABLE_THREADS
     CXXFLAGS := $(CXXFLAGS) -pthread
