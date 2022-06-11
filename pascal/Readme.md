@@ -4,24 +4,24 @@
 
 - [Analisando dados com pascalanalyzer](#analisando-dados-com-pascalanalyzer)
   - [pascalanalyzer](#pascalanalyzer)
-  - [Mudança para o OpenMP](#mudan%C3%A7a-para-o-openmp)
+  - [Mudança para o OpenMP](#mudança-para-o-openmp)
     - [Alterado o Makefile](#alterado-o-makefile)
-    - [Adicionado novas linhas de código](#adicionado-novas-linhas-de-c%C3%B3digo)
-  - [integração com parsec](#integra%C3%A7%C3%A3o-com-parsec)
-  - [Compilação e testes iniciais](#compila%C3%A7%C3%A3o-e-testes-iniciais)
-    - [Limpando compilação antiga](#limpando-compila%C3%A7%C3%A3o-antiga)
+    - [Adicionado novas linhas de código](#adicionado-novas-linhas-de-código)
+  - [integração com parsec](#integração-com-parsec)
+  - [Compilação e testes iniciais](#compilação-e-testes-iniciais)
+    - [Limpando compilação antiga](#limpando-compilação-antiga)
     - [Compilando com pthreads](#compilando-com-pthreads)
     - [Compilando com OpenMP](#compilando-com-openmp)
-    - [Testando compilações](#testando-compila%C3%A7%C3%B5es)
+    - [Testando compilações](#testando-compilações)
   - [Gerando o script run_parscal.sh](#gerando-o-script-run_parscalsh)
-    - [run_parscal.sh  informações da vídeo aula](#run_parscalsh--informa%C3%A7%C3%B5es-da-v%C3%ADdeo-aula)
-        - [o parâmetro **-c (core)**](#o-par%C3%A2metro--c-core)
-        - [o parâmetro **-i (inputs)**](#o-par%C3%A2metro--i-inputs)
-    - [Número de threads, propriedades fora da vídeo aula](#n%C3%BAmero-de-threads-propriedades-fora-da-v%C3%ADdeo-aula)
-  - [teste na minha máquina](#teste-na-minha-m%C3%A1quina)
+    - [run_parscal.sh  informações da vídeo aula](#run_parscalsh--informações-da-vídeo-aula)
+        - [o parâmetro **-c (core)**](#o-parâmetro--c-core)
+        - [o parâmetro **-i (inputs)**](#o-parâmetro--i-inputs)
+    - [Número de threads, propriedades fora da vídeo aula](#número-de-threads-propriedades-fora-da-vídeo-aula)
+  - [teste na minha máquina](#teste-na-minha-máquina)
   - [Resultados](#resultados)
-- [Conclusão](#conclus%C3%A3o)
-  - [Referências](#refer%C3%AAncias)
+- [Conclusão](#conclusão)
+  - [Referências](#referências)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -283,7 +283,7 @@ chmod +x ./run_parscal.sh
 ./run_parscal.sh # pode ir tomar um ☕
 ```
 
-gerando os arquivos **swaptions-pthreads.json** e **swaptions-openmp.json**
+gerando os arquivos [swaptions-pthreads.json](swaptions-pthreads.json) e [swaptions-openmp.json](swaptions-openmp.json)
 
 ## Resultados
 - Criar gráficos com https://pascalsuite.imd.ufrn.br/
