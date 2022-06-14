@@ -20,6 +20,8 @@
     - [Número de threads, propriedades fora da vídeo aula](#número-de-threads-propriedades-fora-da-vídeo-aula)
   - [teste na minha máquina](#teste-na-minha-máquina)
   - [Resultados](#resultados)
+  - [Gráficos Pthreads](#gráficos-pthreads)
+  - [Gráficos OpenMP](#gráficos-openmp)
 - [Conclusão](#conclusão)
   - [Referências](#referências)
 
@@ -286,8 +288,15 @@ chmod +x ./run_parscal.sh
 gerando os arquivos [swaptions-pthreads.json](swaptions-pthreads.json) e [swaptions-openmp.json](swaptions-openmp.json)
 
 ## Resultados
-- Criar gráficos com https://pascalsuite.imd.ufrn.br/
-- discutir os gráficos
+
+
+## Gráficos Pthreads 
+![](resultados/p_threads.png)
+
+## Gráficos OpenMP
+![](resultados/open_mp.png)
+
+
 
 # Conclusão
 
