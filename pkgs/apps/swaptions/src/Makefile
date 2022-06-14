@@ -11,7 +11,7 @@ ifdef version
   endif
 
   ifeq "$(version)" "pthreads" 
-    DEF := $(DEF) -DENABLE_THREADS
+    DEF := $(DEF) -DENABLE_THREADS -DENABLE_PTHREADS
     CXXFLAGS := $(CXXFLAGS) -pthread
   endif
   ifeq "$(version)" "tbb"

@@ -15,7 +15,11 @@
 #include "HJM_type.h"
 
 #ifdef ENABLE_THREADS
+
+#ifdef ENABLE_PTHREADS
 #include <pthread.h>
+#endif // ENABLE_PTHREADS
+
 #define MAX_THREAD 1024
 
 #ifdef OPENMP_VERSION
@@ -309,12 +313,12 @@ int main(int argc, char *argv[])
 #ifdef ENABLE_THREADS
 
 #ifdef OPENMP_VERSION
-
-  #pragma omp parallel for num_threads(nThreads) 
+  printf("OpenMP is enabled !!\n");
+#pragma omp parallel for num_threads(nThreads)
   for (i = 0; i < nThreads; i++)
   {
-    int thread_id =  omp_get_thread_num();
-    printf("Call worked on thread id: %i\n",thread_id);
+    int thread_id = omp_get_thread_num();
+    printf("Call worked on thread id: %i\n", thread_id);
     worker(&thread_id);
   }
 
@@ -323,8 +327,11 @@ int main(int argc, char *argv[])
 #ifdef TBB_VERSION
   Worker w;
   tbb::parallel_for(tbb::blocked_range<int>(0, nSwaptions, TBB_GRAINSIZE), w);
-#else
 
+#endif // TBB_VERSION
+
+#ifdef ENABLE_PTHREADS
+  printf("Pthreads is enabled !!\n");
   int threadIDs[nThreads];
   for (i = 0; i < nThreads; i++)
   {
@@ -338,7 +345,7 @@ int main(int argc, char *argv[])
 
   free(threads);
 
-#endif // TBB_VERSION
+#endif // ENABLE_PTHREADS
 
 #else
   int threadID = 0;
