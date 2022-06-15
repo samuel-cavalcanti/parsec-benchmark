@@ -22,6 +22,7 @@
         "parscal",
         "parscalsh",
         "pascalanalyzer",
+        "ptheads",
         "pthreads"
     ]
 }
