@@ -21,8 +21,13 @@
   - [teste na minha máquina](#teste-na-minha-máquina)
   - [Resultados](#resultados)
   - [Gráficos Pthreads](#gráficos-pthreads)
+    - [Speed up](#speed-up)
+    - [Efficiency](#efficiency)
+    - [time](#time)
   - [Gráficos OpenMP](#gráficos-openmp)
-- [Conclusão](#conclusão)
+    - [Speed up](#speed-up-1)
+    - [Efficiency](#efficiency-1)
+    - [time](#time-1)
   - [Referências](#referências)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -41,7 +46,9 @@ Adicionei no .**gitignore** essa pasta, pois não sei quando a licença do softw
 ### Alterado o Makefile
 Para mudar para o OpenMP, primeiramente foi configurado o Makefile adicionando
 uma nova versão que compila utilizando o OpenMP. Foi adicionado um Define para o
-OpenMP o **OPENMP_VERSION** ,dessa forma podemos adicionar a nova feature sem alterar o código existente.
+OpenMP o **OPENMP_VERSION**, dessa forma podemos adicionar a nova feature sem alterar o código existente. Também foi adicionado
+uma flag **ENABLE_PTHREADS** para desativar o lib **pthreads** sem
+precisar remover linas de código.
 
 
 ```Makefile
@@ -53,7 +60,7 @@ ifdef version
   endif
 
   ifeq "$(version)" "pthreads" 
-    DEF := $(DEF) -DENABLE_THREADS
+    DEF := $(DEF) -DENABLE_THREADS -DENABLE_PTHREADS
     CXXFLAGS := $(CXXFLAGS) -pthread
   endif
   ifeq "$(version)" "tbb"
@@ -65,11 +72,14 @@ endif
 
 ### Adicionado novas linhas de código
 No arquivo [HJM_Securities.cpp](../pkgs/apps/swaptions/src/HJM_Securities.cpp)
-Com o define **OPENMP_VERSION**, foi incluído a lib **#include \<omp.h\>**
+Com o define **OPENMP_VERSION**, foi incluído a lib **#include \<omp.h\>** e com o define  **ENABLE_PTHREADS**, foi removido
+o **#include \<pthread.h\>**
 
 ```c++
-#ifdef ENABLE_THREADS
+#ifdef ENABLE_PTHREADS
 #include <pthread.h>
+#endif // ENABLE_PTHREADS
+
 #define MAX_THREAD 1024
 
 #ifdef OPENMP_VERSION
@@ -83,16 +93,22 @@ Na versão pthreads observamos que nos laços for utilizados,
 a lib pthreads chama a função **worker** com o parâmetro sendo a referência do **threadIDs[i]**. 
 
 ```c++
-	int threadIDs[nThreads];
-        for (i = 0; i < nThreads; i++) {
-          threadIDs[i] = i;
-          pthread_create(&threads[i], &pthread_custom_attr, worker, &threadIDs[i]);// thread_id
-        }
-        for (i = 0; i < nThreads; i++) {
-          pthread_join(threads[i], NULL);
-        }
+#ifdef ENABLE_PTHREADS
+  printf("Pthreads is enabled !!\n");
+  int threadIDs[nThreads];
+  for (i = 0; i < nThreads; i++)
+  {
+    threadIDs[i] = i;
+    pthread_create(&threads[i], &pthread_custom_attr, worker, &threadIDs[i]);
+  }
+  for (i = 0; i < nThreads; i++)
+  {
+    pthread_join(threads[i], NULL);
+  }
 
-	free(threads);
+  free(threads);
+
+#endif // ENABLE_PTHREADS
 ```
 por tanto, para usarmos o OpenMP, foi utilizado o pragma omp
 sendo que é passado para ele o número threads que deve ser utilizado: num_threads(nThreads), sendo nThreads um parâmetro
@@ -100,7 +116,7 @@ que passado por linha de comando.
 
 ```c++
 #ifdef OPENMP_VERSION
-
+   printf("OpenMP is enabled !!\n");
   #pragma omp parallel for num_threads(nThreads) 
   for (i = 0; i < nThreads; i++)
   {
@@ -288,17 +304,33 @@ chmod +x ./run_parscal.sh
 gerando os arquivos [swaptions-pthreads.json](swaptions-pthreads.json) e [swaptions-openmp.json](swaptions-openmp.json)
 
 ## Resultados
-
+Para visualizar os gráficos foi criado um um plotter, que realiza um parser nos arquivos json
+e sava gráficos relacionados ao tempo de execução, speed up e eficiência.
+Onde o speed up $S = \frac{T_{serial}}{T_{parallel}}$  
+e eficiência $E = \frac{S}{p}$, onde $p$ é número de threads.
 
 ## Gráficos Pthreads 
-![](resultados/p_threads.png)
+
+### Speed up
+![](resultados/pthreads/speed_ups.svg)
+
+### Efficiency
+![](resultados/pthreads/efficiencies.svg)
+
+### time 
+![](resultados/pthreads/times.svg)
 
 ## Gráficos OpenMP
-![](resultados/open_mp.png)
 
+### Speed up
+![](resultados/openmp/speed_ups.svg)
 
+### Efficiency
+![](resultados/openmp/efficiencies.svg)
 
-# Conclusão
+### time 
+![](resultados/openmp/times.svg)
+
 
 
 ## Referências
