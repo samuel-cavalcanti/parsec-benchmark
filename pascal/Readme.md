@@ -28,7 +28,7 @@
       - [Speed up](#speed-up-1)
       - [Efficiency](#efficiency-1)
       - [time](#time-1)
-    - [Tabela de tempo](#tabela-de-tempo)
+    - [Tabela de tempo do input native](#tabela-de-tempo-do-input-native)
   - [Referências](#referências)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -332,7 +332,7 @@ e eficiência $E = \frac{S}{p}$, onde $p$ é número de threads.
 #### time 
 ![](results/openmp/times.svg)
 
-### Tabela de tempo
+### Tabela de tempo do input native
 
 | cores | ptheads (tempo em segundos) | OpenMP (tempo em segundos) |
 | ----- | --------------------------- | -------------------------- |
