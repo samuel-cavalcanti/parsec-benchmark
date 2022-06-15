@@ -20,14 +20,14 @@
     - [Número de threads, propriedades fora da vídeo aula](#número-de-threads-propriedades-fora-da-vídeo-aula)
   - [teste na minha máquina](#teste-na-minha-máquina)
   - [Resultados](#resultados)
-  - [Gráficos Pthreads](#gráficos-pthreads)
-    - [Speed up](#speed-up)
-    - [Efficiency](#efficiency)
-    - [time](#time)
-  - [Gráficos OpenMP](#gráficos-openmp)
-    - [Speed up](#speed-up-1)
-    - [Efficiency](#efficiency-1)
-    - [time](#time-1)
+    - [Gráficos Pthreads](#gráficos-pthreads)
+      - [Speed up](#speed-up)
+      - [Efficiency](#efficiency)
+      - [time](#time)
+    - [Gráficos OpenMP](#gráficos-openmp)
+      - [Speed up](#speed-up-1)
+      - [Efficiency](#efficiency-1)
+      - [time](#time-1)
   - [Referências](#referências)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -309,27 +309,27 @@ e sava gráficos relacionados ao tempo de execução, speed up e eficiência.
 Onde o speed up $S = \frac{T_{serial}}{T_{parallel}}$  
 e eficiência $E = \frac{S}{p}$, onde $p$ é número de threads.
 
-## Gráficos Pthreads 
+### Gráficos Pthreads 
 
-### Speed up
-![](resultados/pthreads/speed_ups.svg)
+#### Speed up
+![](results/pthreads/speed_ups.svg)
 
-### Efficiency
-![](resultados/pthreads/efficiencies.svg)
+#### Efficiency
+![](results/pthreads/efficiencies.svg)
 
-### time 
-![](resultados/pthreads/times.svg)
+#### time 
+![](results/pthreads/times.svg)
 
-## Gráficos OpenMP
+### Gráficos OpenMP
 
-### Speed up
-![](resultados/openmp/speed_ups.svg)
+#### Speed up
+![](results/openmp/speed_ups.svg)
 
-### Efficiency
-![](resultados/openmp/efficiencies.svg)
+#### Efficiency
+![](results/openmp/efficiencies.svg)
 
-### time 
-![](resultados/openmp/times.svg)
+#### time 
+![](results/openmp/times.svg)
 
 
 
