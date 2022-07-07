@@ -3,7 +3,7 @@
 # Execute esse script depois de instanciar o pascalanalizer
 
 NTHREADS="__nt__" 
-# segundo frankson, tenho que passar esse parâmetro  __nt__
+# tenho que passar esse parâmetro  __nt__
 # para os cores.
 
 # simsmall
@@ -20,7 +20,7 @@ native="-ns 128 -sm 1000000 -nt ${NTHREADS}"
 
 
 # -ns == nSwaptions número de simulações
-# -sm == NUM_TRIALS número de tentativas por simulação
+# -sm == NUM_TRIALS número de tentativas por simulaçãoimage.png
 # -nt == nThreads  número de Threads
 
 # tenho 8 threads, portanto
