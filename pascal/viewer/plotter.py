@@ -1,10 +1,13 @@
 from cmath import inf
 from matplotlib import pyplot
 from pathlib import Path
+from performances import Benchmark
 
 
 def decorator_next_figure(pyplot: pyplot):
-    pyplot.figure(len(pyplot.get_fignums())+1)
+    fig = pyplot.figure(figsize=[10, 7], dpi=120, facecolor=[1, 1, 1])
+    # fig.set_size_inches(32, 18)
+    # pyplot.figure(len(pyplot.get_fignums())+1)
 
 
 def decorator_custom_plot(pyplot: pyplot, x, y, y_label):
@@ -21,93 +24,113 @@ def decorator_clear_figures(pyplot: pyplot):
         pyplot.figure(figure_number).clf()
 
 
-def plot_performance(title: str, performance_dict:  dict[str, list[float]]):
-
-    speed_ups = performance_dict['speed_ups']
-
-    efficiencies = performance_dict['efficiencies']
-
-    x = list(range(1, len(speed_ups)+1))
-
-    decorator_custom_plot(pyplot, x=x, y=speed_ups, y_label='speed up')
-    pyplot.title(f'{title} speed up')
-
-    decorator_next_figure(pyplot)
-
-    decorator_custom_plot(pyplot, x=x, y=efficiencies, y_label='efficiency')
-    pyplot.title(f'{title} efficiency')
-
-    pyplot.show()
-
-
 def decorator_save_fig(pyplot: pyplot, file_name: Path):
-    figure = pyplot.gcf()
-    figure.set_size_inches(32, 18)
-    pyplot.savefig(file_name, bbox_inches='tight', dpi=100)
+    # figure = pyplot.gcf()
+    # figure.set_size_inches(32, 18)
+    pyplot.savefig(file_name)
 
 
-def plot_performances(performances: dict[str, dict[str, list[float]]], output_dir: Path):
-    output_dir
+def split_benchmark(benchmark: Benchmark) -> tuple[list[list[float]], list[list[float]], list[list[int]], list[str]]:
+    speed_ups = []
+    efficiencies = []
+    times = []
+    inputs = []
+    for performance in benchmark.performances:
+        speed_ups.append(performance.speed_ups)
+        efficiencies.append(performance.efficiencies)
+        times.append(performance.times)
+        inputs.append(performance.input_title)
+
+    return speed_ups, efficiencies, times, inputs
+
+
+def decorator_custom_plot_2(pyplot: pyplot, xs, ys: list[list[float | int]], title: str, y_label: str,  legends: list[str]):
+    for x, y in zip(xs, ys):
+        x = list(range(1, len(y)+1))
+        decorator_custom_plot(pyplot, x=x, y=y,
+                              y_label=y_label)
+
+    pyplot.title(title)
+    pyplot.legend(legends)
+    pyplot.grid(True)
+
+
+def plot_benchmark(benchmark: Benchmark, output_dir: Path):
 
     if not output_dir.is_dir():
         output_dir.mkdir()
 
-    for performance_dict in performances.values():
-        speed_ups = performance_dict['speed_ups']
-        x = list(range(1, len(speed_ups)+1))
-        decorator_custom_plot(pyplot, x=x, y=speed_ups,
-                              y_label='speed up')
+    title = benchmark.title
+    speed_ups_list, efficiencies_list, times_list, input_names = split_benchmark(
+        benchmark)
+    threads = [list(range(1, len(y)+1)) for y in speed_ups_list]
 
-    pyplot.title('speed up')
-    pyplot.legend(performances.keys())
-    decorator_save_fig(pyplot, output_dir.joinpath('speed_ups.svg'))
-
-    decorator_next_figure(pyplot)
-
-    figure = pyplot.gcf()
-    figure.set_size_inches(32, 18)
-
-    for performance_dict in performances.values():
-        efficiencies = performance_dict['efficiencies']
-        x = list(range(1, len(efficiencies)+1))
-        decorator_custom_plot(pyplot, x=x, y=efficiencies,
-                              y_label='efficiency')
-
-    pyplot.title('efficiency')
-    pyplot.legend(performances.keys())
-    decorator_save_fig(pyplot, output_dir.joinpath('efficiencies.svg'))
-
-    decorator_next_figure(pyplot)
-
-    figure = pyplot.gcf()
-    figure.set_size_inches(32, 18)
-
-    for performance_dict in performances.values():
-        times = performance_dict['times']
-        threads = list(range(1, len(times)+1))
-        decorator_custom_plot(pyplot, x=threads, y=times,
-                              y_label='seconds')
-
-    pyplot.title('time execution')
-    pyplot.legend(performances.keys())
-    decorator_save_fig(pyplot, output_dir.joinpath('times.svg'))
-    decorator_next_figure(pyplot)
-
-    for performance_dict in performances.values():
-        times = performance_dict['times']
-        threads = list(range(1, len(times)+1))
+    """
+        dt/dthread,
+        sabendo que  as threads variam de em 1, ou seja, 
+        sempre a diferença será 1,
+        dthread[i+1] - dthread[i] == 1 
+    """
+    def derivate(times: list[int]) -> list[float]:
         dt = [-inf]
         for i in range(1, len(times)):
-            dt += [times[i] - times[i-1]]
+            dt.append(times[i] - times[i-1])
 
-        decorator_custom_plot(pyplot, x=threads, y=dt,
-                              y_label='time per threads')
+        return dt
+    dt = [derivate(times) for times in times_list]
 
-    pyplot.title('dt/dc')
-    pyplot.legend(performances.keys())
-    decorator_save_fig(pyplot, output_dir.joinpath('dt.svg'))
+    plot_data = {
+        'speed_up': {
+            'xs': threads,
+            'ys': speed_ups_list,
+            'y_label': 'speed up',
+            'title': 'speed up',
+            'legends': input_names,
+            'file_name': output_dir.joinpath('speed_ups.svg')
+        },
+        'efficiency': {
+            'xs': threads,
+            'ys': efficiencies_list,
+            'y_label': 'efficiency',
+            'title': 'efficiency',
+            'legends': input_names,
+            'file_name': output_dir.joinpath('efficiencies.svg')
+        },
+        'times': {
+            'xs': threads,
+            'ys': times_list,
+            'y_label': 'seconds',
+            'title': 'time execution',
+            'legends': input_names,
+            'file_name': output_dir.joinpath('times.svg')
+        },
+        'dt': {
+            'xs': threads,
+            'ys': dt,
+            'y_label': r'$\frac{dt}{dc}$',
+            'title': 'derivada do tempo em relação a thread',
+            'legends': input_names,
+            'file_name': output_dir.joinpath('dt.svg')
+        },
 
+    }
+    figure = pyplot.gcf()
+    figure.set_dpi(120)
+    figure.set_size_inches(10, 7)
+    figure.set_facecolor((1,1,1))
+    # figsize=[10, 7], dpi=120, facecolor=[1, 1, 1]
+    for data in plot_data.values():
+        decorator_custom_plot_2(pyplot,
+                                xs=data['xs'],
+                                ys=data['ys'],
+                                title=f'{title} {data["title"]}',
+                                y_label=data['y_label'],
+                                legends=data['legends']
+                                )
+        decorator_save_fig(pyplot, data['file_name'])
+        decorator_next_figure(pyplot)
 
+    # pyplot.show()
     decorator_clear_figures(pyplot)
 
 

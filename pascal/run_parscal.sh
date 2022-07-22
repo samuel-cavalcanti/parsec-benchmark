@@ -20,11 +20,14 @@ native="-ns 128 -sm 1000000 -nt ${NTHREADS}"
 
 
 # -ns == nSwaptions número de simulações
-# -sm == NUM_TRIALS número de tentativas por simulaçãoimage.png
+# -sm == NUM_TRIALS"""CoppeliaSim's Remote API client."""
+
+#número de tentativas por simulaçãoimage.png
 # -nt == nThreads  número de Threads
 
 # tenho 8 threads, portanto
 MY_CORES=8;# colocar 32 caso usando o super computador
 
-pascalanalyzer -c 1:$MY_CORES --ipts "$simsmall,$simmedium,$simlarge,$native" "./swaptions-pthreads" -o "swaptions-pthreads.json"
-pascalanalyzer -c 1:$MY_CORES --ipts "$simsmall,$simmedium,$simlarge,$native" "./swaptions-openmp" -o "swaptions-openmp.json"
+pascalanalyzer -c 1:$MY_CORES --ipts "$simsmall,$simmedium,$simlarge,$native" "./swaptions-pthreads-custom" -o "swaptions-pthreads-custom.json"
+pascalanalyzer -c 1:$MY_CORES --ipts "$simsmall,$simmedium,$simlarge,$native" "./swaptions-openmp-custom" -o "swaptions-openmp-custom.json"
+# pascalanalyzer -c 1:$MY_CORES --ipts "$simsmall,$simmedium,$simlarge,$native" "./swaptions" -o "swaptions-custom.json"
