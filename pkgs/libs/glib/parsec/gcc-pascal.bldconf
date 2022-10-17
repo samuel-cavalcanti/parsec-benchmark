@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# gcc-hooks.bldconf - configuration file for PARSEC
+
+source ${PARSECDIR}/pkgs/libs/glib/parsec/gcc.bldconf
+
+# removing pascal-release flags for compilation. Glib doesn't need them
+LIBS=""
+
+build_env="CFLAGS=\"-I${PARSECDIR}/pkgs/libs/zlib/inst/${PARSECPLAT}/include ${CFLAGS}\" LDFLAGS=\"-L${PARSECDIR}/pkgs/libs/zlib/inst/${PARSECPLAT}/lib \""
