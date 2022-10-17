@@ -48,6 +48,7 @@ export MAKE="/bin/make -j8";
 
 
 package_names=(
+    "blackscholes"
     "bodytrack"
     "facesim"
     "ferret"
@@ -59,9 +60,11 @@ package_names=(
     "x264"
     "canneal"
     "dedup"
+    "streamcluster"
      );
 
 packages=(
+    "apps/blackscholes"
     "apps/bodytrack"
     "apps/facesim"
     "apps/ferret"
@@ -73,8 +76,10 @@ packages=(
     "apps/x264"
     "kernels/canneal"
     "kernels/dedup"
+    "kernels/streamcluster"
      );
 package_binary=(
+    "blackscholes"
     "bodytrack"
     "facesim"
     "ferret"
@@ -86,6 +91,7 @@ package_binary=(
     "x264"
     "canneal"
     "dedup"
+    "streamcluster"
 )
 
 pacal_lib_paths=()

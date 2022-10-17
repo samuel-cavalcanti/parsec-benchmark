@@ -70,7 +70,7 @@ foram compilados com pascal sem apresentar erros.
 Lembando que esse pacotes não necessariamente tem o código fonte
 alterado para a realização da analise de região do código.
 
-- [ ] blackscholes - Makefile
+- [x] apps/blackscholes - Makefile
 - [x] apps/bodytrack - ./configure e Makefile
 - [x] apps/facesim  - Makefile
 - [x] apps/ferret - Makefile
@@ -80,9 +80,9 @@ alterado para a realização da analise de região do código.
 - [x] apps/swaptions - Makefile*
 - [x] apps/vips - ./configure e Makefile
 - [x] apps/x264 - Makefile
-- [ ] kernels/canneal - Makefile
+- [x] kernels/canneal - Makefile
 - [x] kernels/dedup  - Makefile
-- [ ] kernels/streamcluster - Makefile
+- [x] kernels/streamcluster - Makefile
 
 Foi adicionado também um teste automatizado
 que verifica que esses pacotes tem linkado
