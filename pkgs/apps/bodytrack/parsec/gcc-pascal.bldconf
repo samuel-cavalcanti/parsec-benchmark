@@ -1,0 +1,7 @@
+#!/bin/bash
+
+source ${PARSECDIR}/pkgs/apps/bodytrack/parsec/gcc.bldconf
+
+# Package dependencies
+build_deps="pascal-releases"
+
