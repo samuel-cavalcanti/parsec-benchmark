@@ -63,6 +63,13 @@ git checkout pascal-parsec
 
 ## Testes de compilação
 
+Com o parcal sendo uma lib do parsec é possível compilar
+todos os pacotes do parsec com o pascal como dependência
+aqui estão  uma lista no momento de todos os pacotes que
+foram compilados com pascal sem apresentar erros.
+Lembando que esse pacotes não necessariamente tem o código fonte
+alterado para a realização da analise de região do código.
+
 - [ ] blackscholes - Makefile
 - [x] bodytrack - ./configure e Makefile
 - [x] facesim  - Makefile
@@ -77,8 +84,24 @@ git checkout pascal-parsec
 - [ ] dedup  - Makefile
 - [ ] streamcluster - Makefile
 
+Foi adicionado também um teste automatizado
+que verifica que esses pacotes tem linkado
+a biblioteca dinâmica do pascal.
+O arquivo [test_gcc_pascal_build.sh](test_gcc_pascal_build.sh)
+Para executar o teste:
+
+```bash
+./test_gcc_pascal_build.sh
+```
+
+Exemplo de saída
+
+![](assets/test_pass.png)
+
+
 ## adicionado o PASCAL
 
+Pacotes totalmente portados para pascal viewer
 
 - [ ] blackscholes - Makefile
 - [ ] bodytrack - ./configure e Makefile
@@ -93,3 +116,4 @@ git checkout pascal-parsec
 - [ ] canneal - Makefile
 - [ ] dedup  - Makefile
 - [ ] streamcluster - Makefile
+

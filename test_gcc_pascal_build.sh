@@ -1,36 +1,109 @@
 #! /bin/bash
 
+# execute esse test na raiz do repositório
+
+source env.sh
+
+ case "${OSTYPE}" in
+  *linux*)   ostype="linux";;
+  *solaris*) ostype="solaris";;
+  *bsd*)     ostype="bsd";;
+  *aix*)     ostype="aix";;
+  *hpux*)    ostype="hpux";;
+  *irix*)    ostype="irix";;
+  *amigaos*) ostype="amigaos";;
+  *beos*)    ostype="beos";;
+  *bsdi*)    ostype="bsdi";;
+  *cygwin*)  ostype="windows";;
+  *darwin*)  ostype="darwin";;
+  *interix*) ostype="interix";;
+  *os2*)     ostype="os2";;
+  *osf*)     ostype="osf";;
+  *sunos*)   ostype="sunos";;
+  *sysv*)    ostype="sysv";;
+  *sco*)     ostype="sco";;
+  *)         ostype="${OSTYPE}";;
+  esac
+
+  # Determine HOST name to use for automatically determined PARSECPLAT
+  case "${HOSTTYPE}" in
+  *i386*)    hosttype="i386";;
+  *x86_64*)  hosttype="amd64";;
+  *amd64*)   hosttype="amd64";;
+  *i486*)    hosttype="amd64";;
+  *sparc*)   hosttype="sparc";;
+  *sun*)     hosttype="sparc";;
+  *ia64*)    hosttype="ia64";;
+  *itanium*) hosttype="ia64";;
+  *powerpc*) hosttype="powerpc";;
+  *ppc*)     hosttype="powerpc";;
+  *alpha*)   hosttype="alpha";;
+  *mips*)    hosttype="mips";;
+  *arm*)     hosttype="arm";;
+  *)         hosttype="${HOSTTYPE}";;
+  esac
+
+
+export MAKE="/bin/make -j8";
+
 
 packages=(
-    "swaptions"
+    "bodytrack"
     "facesim"
-
+    "raytrace"
+    "swaptions"
+    "vips"
+    "x264"
      );
 
+package_binary=(
+    "bodytrack"
+    "facesim"
+    "rtview"
+    "swaptions"
+    "vips"
+    "x264"
+)
+
 pacal_lib_paths=()
+# parsecmgmt -a fullclean -p all
+# parsecmgmt -a fulluninstall -p all
 
-for package in ${packages[@]}; do
-    rm -rf pkgs/apps/$package/inst/
-    rm -rf pkgs/apps/$package/obj/
+for index in ${!packages[@]}; do
+    package=${packages[$index]};
+    binary=${package_binary[$index]};
 
-    parsecmgmt -a build -p $package -c gcc-pascal
-    
-    pacal_lib_path=$(ldd "pkgs/apps/$package/inst/amd64-linux.gcc-pascal/bin/$package"  | grep libmanualinst.so)
+
+    parsecmgmt -a build -p $package -c gcc-pascal;
+
+    my_personal_path="${hosttype}-${ostype}.gcc-pascal"
+    binary_path="pkgs/apps/$package/inst/$my_personal_path/bin/$binary"
+
+    pacal_lib_path=$(ldd "$binary_path"  | grep libmanualinst.so)
     
    
     pacal_lib_paths+=("$pacal_lib_path")
 done;
 
 
+RED='\033[0;31m'
+NO_COLOR='\033[0m'
+GREEN='\033[0;32m'
 for index in ${!pacal_lib_paths[@]}; do
 
     path=${pacal_lib_paths[$index]}
     package=${packages[$index]}
+    message="$package  path:${pacal_lib_paths[$index]}"
 
-    if [[ "$path" =~ .*"not found".* ]]; then
-        echo "ERROR: $package => $path"
-        exit 1
+    if [[ "$path" =~ .*"/libmanualinst.so".* ]]; then
+
+        echo -e "$GREEN TEST PASS: $NO_COLOR $message"
+
+    else
+        
+        echo -e "$RED ERROR: $NO_COLOR $message"
+        
     fi
 
-    echo "$package -- ${pacal_lib_paths[$index]}"
+ 
 done;
