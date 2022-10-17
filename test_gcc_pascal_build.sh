@@ -47,22 +47,38 @@ source env.sh
 export MAKE="/bin/make -j8";
 
 
-packages=(
+package_names=(
     "bodytrack"
     "facesim"
+    "ferret"
     "raytrace"
     "swaptions"
     "vips"
     "x264"
+    "dedup"
      );
 
+packages=(
+    "apps/bodytrack"
+    "apps/facesim"
+    "apps/ferret"
+    "apps/fluidanimate"
+    "apps/raytrace"
+    "apps/swaptions"
+    "apps/vips"
+    "apps/x264"
+    "kernels/dedup"
+     );
 package_binary=(
     "bodytrack"
     "facesim"
+    "ferret"
+    "fluidanimate"
     "rtview"
     "swaptions"
     "vips"
     "x264"
+    "dedup"
 )
 
 pacal_lib_paths=()
@@ -72,12 +88,13 @@ pacal_lib_paths=()
 for index in ${!packages[@]}; do
     package=${packages[$index]};
     binary=${package_binary[$index]};
+    package_name=${package_names[$index]}
 
 
-    parsecmgmt -a build -p $package -c gcc-pascal;
+    parsecmgmt -a build -p $package_name -c gcc-pascal;
 
     my_personal_path="${hosttype}-${ostype}.gcc-pascal"
-    binary_path="pkgs/apps/$package/inst/$my_personal_path/bin/$binary"
+    binary_path="pkgs/$package/inst/$my_personal_path/bin/$binary"
 
     pacal_lib_path=$(ldd "$binary_path"  | grep libmanualinst.so)
     
