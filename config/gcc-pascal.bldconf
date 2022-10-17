@@ -12,7 +12,7 @@ PASCAL_LIB_PATH="$PARSECDIR/pkgs/libs/pascal-releases"
 # Enable PARSEC hooks
 CFLAGS="${CFLAGS} -DENABLE_PASCAL_HOOKS -I$PASCAL_LIB_PATH/include"
 CXXFLAGS="${CXXFLAGS} -DENABLE_PASCAL_HOOKS -I$PASCAL_LIB_PATH/include"
-LDFLAGS="${LDFLAGS} -L $PASCAL_LIB_PATH/lib -Wl,-R$PASCAL_LIB_PATH/lib"
+LDFLAGS="${LDFLAGS} -L$PASCAL_LIB_PATH/lib -Wl,-R$PASCAL_LIB_PATH/lib"
 LIBS="${LIBS} -lmanualinst"
 
 # Add directory with hooks library to library search path
