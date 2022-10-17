@@ -60,3 +60,36 @@ git checkout pascal-parsec
 ## exemplo de compilação
 
 [![Watch the video](https://img.youtube.com/vi/tC5cU_M9zYw/maxresdefault.jpg)](https://youtu.be/tC5cU_M9zYw)
+
+## Testes de compilação
+
+- [ ] blackscholes - Makefile
+- [x] bodytrack - ./configure e Makefile
+- [x] facesim  - Makefile
+- [ ] ferret - Makefile
+- [ ] fluidanimate - Makefile
+- [ ] freqmine - Makefile
+- [x] raytrace - CMakeLists.txt
+- [x] swaptions - Makefile*
+- [x] vips - ./configure e Makefile
+- [x] x264 - Makefile
+- [ ] canneal - Makefile
+- [ ] dedup  - Makefile
+- [ ] streamcluster - Makefile
+
+## adicionado o PASCAL
+
+
+- [ ] blackscholes - Makefile
+- [ ] bodytrack - ./configure e Makefile
+- [ ] facesim  - Makefile
+- [ ] ferret - Makefile
+- [ ] fluidanimate - Makefile
+- [ ] freqmine - Makefile
+- [ ] raytrace - CMakeLists.txt
+- [x] swaptions - Makefile*
+- [ ] vips - ./configure e Makefile
+- [ ] x264 - Makefile
+- [ ] canneal - Makefile
+- [ ] dedup  - Makefile
+- [ ] streamcluster - Makefile
