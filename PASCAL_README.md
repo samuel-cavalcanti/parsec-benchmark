@@ -55,3 +55,8 @@ git clone https://github.com/samuel-cavalcanti/parsec-benchmark
 #mudando a branch para pascal-parsec
 git checkout pascal-parsec
 ```
+
+
+## exemplo de compilação
+
+[![Watch the video](https://img.youtube.com/vi/tC5cU_M9zYw/maxresdefault.jpg)](https://youtu.be/tC5cU_M9zYw)
