@@ -9,6 +9,10 @@
 #ifdef ENABLE_PARSEC_HOOKS
 #include <hooks.h>
 #endif
+#ifdef ENABLE_PASCAL_HOOKS
+#include <pascalops.h>
+#endif
+
 using namespace PhysBAM;
 //#####################################################################
 // Function Execute_Main_Program
@@ -23,9 +27,15 @@ Execute_Main_Program()
 #ifdef ENABLE_PARSEC_HOOKS
 	__parsec_roi_begin();
 #endif
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_start(1);
+#endif
 	Simulate_To_Frame (example.last_frame);
 #ifdef ENABLE_PARSEC_HOOKS
 	__parsec_roi_end();
+#endif
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_stop(1);
 #endif
 
 	//Always write last frame for verification purposes
