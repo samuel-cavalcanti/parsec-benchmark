@@ -74,7 +74,7 @@ alterado para a realização da analise de região do código.
 - [x] apps/bodytrack - ./configure e Makefile
 - [x] apps/facesim  - Makefile
 - [x] apps/ferret - Makefile
-- [ ] apps/fluidanimate - Makefile
+- [x] apps/fluidanimate - Makefile
 - [ ] apps/freqmine - Makefile
 - [x] apps/raytrace - CMakeLists.txt
 - [x] apps/swaptions - Makefile*
