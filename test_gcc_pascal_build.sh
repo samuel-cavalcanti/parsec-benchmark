@@ -57,6 +57,7 @@ package_names=(
     "swaptions"
     "vips"
     "x264"
+    "canneal"
     "dedup"
      );
 
@@ -70,6 +71,7 @@ packages=(
     "apps/swaptions"
     "apps/vips"
     "apps/x264"
+    "kernels/canneal"
     "kernels/dedup"
      );
 package_binary=(
@@ -82,6 +84,7 @@ package_binary=(
     "swaptions"
     "vips"
     "x264"
+    "canneal"
     "dedup"
 )
 
