@@ -4,7 +4,7 @@
 packages=(
     "swaptions"
     "facesim"
-    
+
      );
 
 pacal_lib_paths=()
@@ -32,5 +32,5 @@ for index in ${!pacal_lib_paths[@]}; do
         exit 1
     fi
 
-    echo "pacal_lib_paths[$index] = ${pacal_lib_paths[$index]}"
+    echo "$package -- ${pacal_lib_paths[$index]}"
 done;
