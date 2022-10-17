@@ -71,18 +71,18 @@ Lembando que esse pacotes não necessariamente tem o código fonte
 alterado para a realização da analise de região do código.
 
 - [ ] blackscholes - Makefile
-- [x] bodytrack - ./configure e Makefile
-- [x] facesim  - Makefile
-- [ ] ferret - Makefile
-- [ ] fluidanimate - Makefile
-- [ ] freqmine - Makefile
-- [x] raytrace - CMakeLists.txt
-- [x] swaptions - Makefile*
-- [x] vips - ./configure e Makefile
-- [x] x264 - Makefile
-- [ ] canneal - Makefile
-- [ ] dedup  - Makefile
-- [ ] streamcluster - Makefile
+- [x] apps/bodytrack - ./configure e Makefile
+- [x] apps/facesim  - Makefile
+- [x] apps/ferret - Makefile
+- [ ] apps/fluidanimate - Makefile
+- [ ] apps/freqmine - Makefile
+- [x] apps/raytrace - CMakeLists.txt
+- [x] apps/swaptions - Makefile*
+- [x] apps/vips - ./configure e Makefile
+- [x] apps/x264 - Makefile
+- [ ] kernels/canneal - Makefile
+- [x] kernels/dedup  - Makefile
+- [ ] kernels/streamcluster - Makefile
 
 Foi adicionado também um teste automatizado
 que verifica que esses pacotes tem linkado
