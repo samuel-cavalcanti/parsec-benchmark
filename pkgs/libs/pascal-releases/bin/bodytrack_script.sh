@@ -24,7 +24,7 @@ input_simsmall="input_simsmall.tar"
 arg_simsmall="sequenceB_1 4 1 1000 5 0 $NTHREADS"
 
 #native
-input_native="sequenceB_261 4 261 4000 5 0 $NTHREADS"
+arg_native="sequenceB_261 4 261 4000 5 0 $NTHREADS"
 input_native="input_native.tar"
 
 
