@@ -1,5 +1,5 @@
 #!/bin/bash 
-#SBATCH --job-name=swaptions 
+#SBATCH --job-name=facesim 
 #SBATCH --time=2-0:0
 #SBATCH --cpus-per-task=32
 #SBATCH --hint=compute_bound
