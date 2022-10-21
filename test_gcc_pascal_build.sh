@@ -43,8 +43,8 @@ source env.sh
   *)         hosttype="${HOSTTYPE}";;
   esac
 
-
-export MAKE="/bin/make -j8";
+# Algums pacontes não consegem ser compilados com multiplos jobs
+#export MAKE="/bin/make -j8";
 
 
 package_names=(
