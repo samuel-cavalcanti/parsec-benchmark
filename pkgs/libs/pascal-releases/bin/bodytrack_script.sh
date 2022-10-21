@@ -9,7 +9,7 @@
 
 
 PASCALANALYZER='pkgs/libs/pascal-releases/bin/pascalanalyzer'
-BODYTRACK='pkgs/apps/bodytrack/inst/amd64-linux.gcc-pascal/bin/bodytrack'
+BODYTRACK='./pkgs/apps/bodytrack/inst/amd64-linux.gcc-pascal/bin/bodytrack'
 
 echo "Esse script é feito para ser executado na pasta raiz do parsec!!"
 
@@ -34,14 +34,13 @@ input_native="input_native.tar"
 # -nt == nThreads  número de Threads
 
 # tenho 8 threads, portanto
-MY_CORES="1,2,3,4,5,6,7,8";#,16,32,64 ";# colocar 32 caso usando o super computador
+MY_CORES="1:32";#,16,32,64 ";# colocar 32 caso usando o super computador
 
 tar -xf "pkgs/apps/bodytrack/inputs/$input_simsmall";
-echo "./$PASCALANALYZER -t man -c "$MY_CORES" --ipts " $arg_simsmall" "$BODYTRACK" -o bodytrack-pthreads.json"
+
 
 # -t man é para informar que estou utilizando pascalops.h para isolar a região paralelizada
-./$PASCALANALYZER -t man -c "$MY_CORES" --ipts " \"$arg_simsmall\"  " "$BODYTRACK" -o "bodytrack-pthreads.json"
-
+./$PASCALANALYZER -t man -c $MY_CORES --ragt acc --ipts  " $arg_simsmall"   $BODYTRACK -o "bodytrack-pthreads.json"
 
 
 # cleaing input

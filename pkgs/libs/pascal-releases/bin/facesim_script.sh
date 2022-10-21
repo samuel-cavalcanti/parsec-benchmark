@@ -37,7 +37,7 @@ MY_CORES="1,2,3,4,6,8";#,16,32,64 ";# colocar 32 caso usando o super computador
 
 tar -xf "pkgs/apps/facesim/inputs/$simsmall";
 # -t man é para informar que estou utilizando pascalops.h para isolar a região paralelizada
-./$PASCALANALYZER -t man -c "$MY_CORES" --ipts " -timing -threads $NTHREADS" "$FACESIM" -o "facesim-pthreads.json"
+./$PASCALANALYZER -t man -c "$MY_CORES" --ragt acc --ipts " -timing -threads $NTHREADS" "$FACESIM" -o "facesim-pthreads.json"
 
 
 # cleaing input
