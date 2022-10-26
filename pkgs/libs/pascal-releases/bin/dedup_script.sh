@@ -1,5 +1,5 @@
 #!/bin/bash 
-#SBATCH --job-name=facesim 
+#SBATCH --job-name=dedup 
 #SBATCH --time=2-0:0
 #SBATCH --cpus-per-task=32
 #SBATCH --hint=compute_bound
@@ -8,13 +8,13 @@ export OMP_NUM_THREADS=32
 
 
 
-PASCALANALYZER='pkgs/libs/pascal-releases/bin/pascaENABLE_STATISTICSlanalyzer'
+PASCALANALYZER='pkgs/libs/pascal-releases/bin/pascalanalyzer'
 DEDUP='pkgs/kernels/dedup/inst/amd64-linux.gcc-pascal/bin/dedup'
 
 echo "Esse script é feito para ser executado na pasta raiz do parsec!!"
 
 
-NTHREADS="__nt__" 
+NTHREADS=2;#"__nt__" 
 # tenho que passar esse parâmetro  __nt__
 # para os cores.
 
@@ -51,7 +51,7 @@ tar -xf "pkgs/kernels/dedup/inputs/$simsmall";
 
 
 # RODANDO SOLO 
-./$DEDUP $simsmall_run_args
+./"$DEDUP $simsmall_run_args"
 
 # # cleaing input
 # rm -rf  media.dat
