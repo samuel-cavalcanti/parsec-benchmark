@@ -2,6 +2,7 @@
 
 # gcc-hooks.bldconf - configuration file for PARSEC
 
+LIBS="${LIBS} -lmanualinst"
 source ${PARSECDIR}/pkgs/apps/ferret/parsec/gcc.bldconf
 
 # Package dependencies

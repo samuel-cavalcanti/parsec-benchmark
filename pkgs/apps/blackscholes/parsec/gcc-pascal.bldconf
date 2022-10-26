@@ -4,6 +4,8 @@
 
 source ${PARSECDIR}/pkgs/apps/blackscholes/parsec/gcc.bldconf
 
+LIBS="${LIBS} -lmanualinst"
 # Package dependencies
 build_deps="$build_deps pascal-releases"
+
 
