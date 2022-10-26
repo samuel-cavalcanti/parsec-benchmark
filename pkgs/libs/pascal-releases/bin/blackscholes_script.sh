@@ -33,7 +33,7 @@ native_run_args="${NTHREADS} in_10M.txt prices.txt"
 # tenho 8 threads, portanto
 MY_CORES="1:32";# colocar 32 caso usando o super computador
 
-tar -xf "pkgs/apps/blackscholes/inputs/$simsmall";
+tar -xf "pkgs/apps/blackscholes/inputs/$native";
 
 
 
@@ -43,7 +43,7 @@ tar -xf "pkgs/apps/blackscholes/inputs/$simsmall";
 # LEMBRE-SE  de OLHAR O parâmetro NTHREADS, e verifica se o valor é __nt__
 
 # -t man é para informar que estou utilizando pascalops.h para isolar a região paralelizada
-./$PASCALANALYZER -t man -c ${MY_CORES} --ragt acc --ipts " ${simsmall_run_args}" "$BLACKSCHOLES" -o "blackscholes-pthreads.json"
+./$PASCALANALYZER -t man -c ${MY_CORES} --ragt acc --ipts " ${native_run_args}" "$BLACKSCHOLES" -o "blackscholes-pthreads.json"
 
 
 # # cleaing input
