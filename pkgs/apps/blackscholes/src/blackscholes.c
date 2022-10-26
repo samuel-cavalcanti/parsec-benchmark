@@ -12,6 +12,10 @@
 #include <math.h>
 #include <string.h>
 
+#ifdef ENABLE_PASCAL_HOOKS
+#include <pascalops.h>
+#endif
+
 #ifdef ENABLE_PARSEC_HOOKS
 #include <hooks.h>
 #endif
@@ -418,6 +422,9 @@ int main (int argc, char **argv)
 #ifdef ENABLE_PARSEC_HOOKS
     __parsec_roi_begin();
 #endif
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_start(1);
+#endif
 
 #ifdef ENABLE_THREADS
 #ifdef WIN32
@@ -464,6 +471,10 @@ int main (int argc, char **argv)
 #endif //ENABLE_TBB
 #endif //ENABLE_OPENMP
 #endif //ENABLE_THREADS
+
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_stop(1);
+#endif
 
 #ifdef ENABLE_PARSEC_HOOKS
     __parsec_roi_end();

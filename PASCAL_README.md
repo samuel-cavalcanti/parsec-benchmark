@@ -11,7 +11,6 @@ o parsec adicionando uma nova flag: **-c gcc-pascal** para o parsec
 e adicionado um novo define: **ENABLE_PASCAL_HOOKS**  para que é
 inserido ao passar a flag -c gcc-pascal no pascal.
 
-
 ## Portando aplicações para o PARSEC
 
 Com essa nova flag você precisa fazer duas coisas. Primeiro você precisa
@@ -41,7 +40,6 @@ procure por ***__parsec_roi_begin*** e  ***__parsec_roi_end*** nos códigos
 fontes e adicione o *pascal_start* e *pascal_stop*.
 Veja o arquivo  [HJM_Securities.cpp)](pkgs/apps/swaptions/src/HJM_Securities.cpp) do swaptions como exemplo.
 
-
 ## Dicas git
 
 esse é um dos meus repositórios [github.com/samuel-cavalcanti/parsec-benchmark](https://github.com/samuel-cavalcanti/parsec-benchmark), mais especificamente a branch pascal-parsec desse repositório.
@@ -55,7 +53,6 @@ git clone https://github.com/samuel-cavalcanti/parsec-benchmark
 #mudando a branch para pascal-parsec
 git checkout pascal-parsec
 ```
-
 
 ## exemplo de compilação
 
@@ -96,14 +93,13 @@ Para executar o teste:
 
 Exemplo de saída
 
-![](assets/test_pass.png)
-
+![TESS PASS](assets/test_pass.png)
 
 ## adicionado o PASCAL
 
 Pacotes totalmente portados para pascal viewer
 
-- [ ] blackscholes - Makefile
+- [x] blackscholes - Makefile
 - [x] bodytrack - ./configure e Makefile
 - [x] facesim  - Makefile
 - [ ] ferret - Makefile
@@ -111,9 +107,8 @@ Pacotes totalmente portados para pascal viewer
 - [ ] freqmine - Makefile
 - [ ] raytrace - CMakeLists.txt
 - [x] swaptions - Makefile*
-- [ ] vips - ./configure e Makefile
+- [ ] vips - ./configure e Makefile (não achei o int main)
 - [ ] x264 - Makefile
 - [x] canneal - Makefile
-- [ ] dedup  - Makefile
+- [ ] dedup  - Makefile (erros de compilação com pascalops.h)
 - [ ] streamcluster - Makefile
-
