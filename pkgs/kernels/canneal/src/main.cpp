@@ -42,6 +42,11 @@
 #include <hooks.h>
 #endif
 
+
+#ifdef ENABLE_PASCAL_HOOKS
+#include <pascalops.h>
+#endif
+
 #include "annealer_types.h"
 #include "annealer_thread.h"
 #include "netlist.h"
@@ -109,6 +114,12 @@ int main (int argc, char * const argv[]) {
 #ifdef ENABLE_PARSEC_HOOKS
 	__parsec_roi_begin();
 #endif
+
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_start(1);
+#endif
+
+
 #ifdef ENABLE_THREADS
 	std::vector<pthread_t> threads(num_threads);
 	void* thread_in = static_cast<void*>(&a_thread);
@@ -124,6 +135,11 @@ int main (int argc, char * const argv[]) {
 #ifdef ENABLE_PARSEC_HOOKS
 	__parsec_roi_end();
 #endif
+
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_stop(1);
+#endif
+
 	
 	cout << "Final routing is: " << my_netlist.total_routing_cost() << endl;
 
