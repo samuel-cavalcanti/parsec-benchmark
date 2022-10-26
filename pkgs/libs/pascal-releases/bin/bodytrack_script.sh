@@ -35,13 +35,13 @@ input_native="input_native.tar"
 # -nt == nThreads  número de Threads
 
 # tenho 8 threads, portanto
-MY_CORES="1:32";#,16,32,64 ";# colocar 32 caso usando o super computador
+MY_CORES="1:32";# colocar 32 caso usando o super computador
 
-tar -xf "pkgs/apps/bodytrack/inputs/$input_simsmall";
+tar -xf "pkgs/apps/bodytrack/inputs/$input_native";
 
 
 # -t man é para informar que estou utilizando pascalops.h para isolar a região paralelizada
-./$PASCALANALYZER -t man -c $MY_CORES --ragt acc --ipts  " $arg_simsmall"   $BODYTRACK -o "bodytrack-pthreads.json"
+./$PASCALANALYZER -t man -c $MY_CORES --ragt acc --ipts  " $arg_native"   $BODYTRACK -o "bodytrack-pthreads.json"
 
 
 # cleaing input

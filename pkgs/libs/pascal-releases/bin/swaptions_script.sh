@@ -36,4 +36,4 @@ native="-ns 128 -sm 1000000 -nt ${NTHREADS}"
 MY_CORES=8;# colocar 32 caso usando o super computador
 
 # -t man é para informar que estou utilizando pascalops.h para isolar a região paralelizada
-./$PASCALANALYZER -t man -c 1:$MY_CORES --ipts "$simsmall" "$SWAPTIONS" -o "swaptions-pthreads.json"
+./$PASCALANALYZER -t man -c 1:$MY_CORES --ipts "$native" "$SWAPTIONS" -o "swaptions-pthreads.json"
