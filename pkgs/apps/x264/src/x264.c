@@ -47,6 +47,10 @@
 #include <hooks.h>
 #endif
 
+#ifdef ENABLE_PASCAL_HOOKS
+#include <pascalops.h>
+#endif
+
 uint8_t *mux_buffer = NULL;
 int mux_buffer_size = 0;
 
@@ -852,6 +856,12 @@ static int  Encode( x264_param_t *param, cli_opt_t *opt )
     __parsec_roi_begin();
 #endif
 
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_start(1);
+#endif
+
+
+
     /* Encode frames */
     for( i_frame = 0, i_file = 0; b_ctrl_c == 0 && (i_frame < i_frame_total || i_frame_total == 0); )
     {
@@ -903,6 +913,10 @@ static int  Encode( x264_param_t *param, cli_opt_t *opt )
 
 #ifdef ENABLE_PARSEC_HOOKS
     __parsec_roi_end();
+#endif
+
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_stop(1);
 #endif
 
     i_end = x264_mdate();
