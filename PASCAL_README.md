@@ -104,8 +104,8 @@ Exemplo de saída
 Pacotes totalmente portados para pascal viewer
 
 - [ ] blackscholes - Makefile
-- [ ] bodytrack - ./configure e Makefile
-- [ ] facesim  - Makefile
+- [x] bodytrack - ./configure e Makefile
+- [x] facesim  - Makefile
 - [ ] ferret - Makefile
 - [ ] fluidanimate - Makefile
 - [ ] freqmine - Makefile
@@ -113,7 +113,7 @@ Pacotes totalmente portados para pascal viewer
 - [x] swaptions - Makefile*
 - [ ] vips - ./configure e Makefile
 - [ ] x264 - Makefile
-- [ ] canneal - Makefile
+- [x] canneal - Makefile
 - [ ] dedup  - Makefile
 - [ ] streamcluster - Makefile
 
