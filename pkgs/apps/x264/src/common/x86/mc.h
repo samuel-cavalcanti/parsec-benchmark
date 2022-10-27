@@ -1,7 +1,7 @@
 /*****************************************************************************
- * mc.h: h264 encoder library
+ * mc.h: x86 motion compensation
  *****************************************************************************
- * Copyright (C) 2003-2008 x264 project
+ * Copyright (C) 2003-2022 x264 project
  *
  * Authors: Loren Merritt <lorenm@u.washington.edu>
  *          Laurent Aimar <fenrir@via.ecp.fr>
@@ -19,11 +19,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02111, USA.
+ *
+ * This program is also available under a commercial proprietary license.
+ * For more information, contact us at licensing@x264.com.
  *****************************************************************************/
 
-#ifndef X264_I386_MC_H
-#define X264_I386_MC_H
+#ifndef X264_X86_MC_H
+#define X264_X86_MC_H
 
-void x264_mc_init_mmx( int cpu, x264_mc_functions_t *pf );
+#define x264_mc_init_mmx x264_template(mc_init_mmx)
+void x264_mc_init_mmx( uint32_t cpu, x264_mc_functions_t *pf );
 
 #endif
