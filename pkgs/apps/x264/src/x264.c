@@ -73,6 +73,15 @@
 #include <lsmash.h>
 #endif
 
+#ifdef ENABLE_PARSEC_HOOKS
+#include <hooks.h>
+#endif
+
+#ifdef ENABLE_PASCAL_HOOKS
+#include <pascalops.h>
+#endif
+
+
 #ifdef _WIN32
 #define CONSOLE_TITLE_SIZE 200
 static wchar_t org_console_title[CONSOLE_TITLE_SIZE] = L"";
@@ -366,6 +375,20 @@ REALIGN_STACK int main( int argc, char **argv )
 
     FAIL_IF_ERROR( x264_threading_init(), "unable to initialize threading\n" );
 
+#ifdef PARSEC_VERSION
+#define __PARSEC_STRING(x) #x
+#define __PARSEC_XSTRING(x) __PARSEC_STRING(x)
+    printf("PARSEC Benchmark Suite Version "__PARSEC_XSTRING(PARSEC_VERSION)"\n");
+    fflush(NULL);
+#else
+    printf("PARSEC Benchmark Suite\n");
+    fflush(NULL);
+#endif //PARSEC_VERSION
+#ifdef ENABLE_PARSEC_HOOKS
+    __parsec_bench_begin(__parsec_x264);
+#endif
+
+
 #ifdef _WIN32
     FAIL_IF_ERROR( !get_argv_utf8( &argc, &argv ), "unable to convert command line to UTF-8\n" );
 
@@ -408,6 +431,12 @@ REALIGN_STACK int main( int argc, char **argv )
     SetConsoleTitleW( org_console_title );
     free( argv );
 #endif
+
+#ifdef ENABLE_PARSEC_HOOKS
+    __parsec_bench_end();
+#endif
+
+
 
     return ret;
 }
@@ -1968,6 +1997,14 @@ static int encode( x264_param_t *param, cli_opt_t *opt )
     if( opt->tcfile_out )
         fprintf( opt->tcfile_out, "# timecode format v2\n" );
 
+
+#ifdef ENABLE_PARSEC_HOOKS
+    __parsec_roi_begin();
+#endif
+
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_start(1);
+#endif
     /* Encode frames */
     for( ; !b_ctrl_c && (i_frame < param->i_frame_total || !param->i_frame_total); i_frame++ )
     {
@@ -2049,6 +2086,14 @@ static int encode( x264_param_t *param, cli_opt_t *opt )
         if( opt->b_progress && i_frame_output )
             i_previous = print_status( i_start, i_previous, i_frame_output, param->i_frame_total, i_file, param, 2 * last_dts - prev_dts - first_dts );
     }
+
+#ifdef ENABLE_PARSEC_HOOKS
+    __parsec_roi_end();
+#endif
+
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_stop(1);
+#endif
 fail:
     if( pts_warning_cnt >= MAX_PTS_WARNING && cli_log_level < X264_LOG_DEBUG )
         x264_cli_log( "x264", X264_LOG_WARNING, "%d suppressed nonmonotonic pts warnings\n", pts_warning_cnt-MAX_PTS_WARNING );
