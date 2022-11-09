@@ -108,7 +108,7 @@ Pacotes totalmente portados para pascal viewer
 - [ ] raytrace - CMakeLists.txt
 - [x] swaptions - Makefile*
 - [ ] vips - ./configure e Makefile (não achei o int main)
-- [ ] x264 - Makefile
+- [x] x264 - Makefile
 - [x] canneal - Makefile
 - [ ] dedup  - Makefile (erros de compilação com pascalops.h)
 - [ ] streamcluster - Makefile
