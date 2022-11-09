@@ -45,4 +45,4 @@ tar -xf "pkgs/apps/bodytrack/inputs/$input_native";
 
 
 # cleaing input
-rm -rf sequenceB_1
+rm -rf sequenceB*
