@@ -29,6 +29,11 @@
 #include <hooks.h>
 #endif
 
+#ifdef ENABLE_PASCAL_HOOKS
+#include <pascalops.h>
+#endif
+
+
 //Uncomment to add code to check that Courant–Friedrichs–Lewy condition is satisfied at runtime
 //#define ENABLE_CFL_CHECK
 
@@ -1240,6 +1245,11 @@ int main(int argc, char *argv[])
 #ifdef ENABLE_PARSEC_HOOKS
   __parsec_roi_begin();
 #endif
+
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_start(1);
+#endif
+
 #if defined(WIN32)
   thread_args* targs = (thread_args*)alloca(sizeof(thread_args)*threadnum);
 #else
@@ -1261,6 +1271,10 @@ int main(int argc, char *argv[])
   }
 #ifdef ENABLE_PARSEC_HOOKS
   __parsec_roi_end();
+#endif
+
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_stop(1);
 #endif
 
   if(argc > 4)

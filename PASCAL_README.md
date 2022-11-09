@@ -112,7 +112,7 @@ Pacotes totalmente portados para pascal viewer
 - [x] bodytrack - ./configure e Makefile
 - [x] facesim  - Makefile
 - [ ] ferret - Makefile
-- [ ] fluidanimate - Makefile
+- [x] fluidanimate - Makefile
 - [ ] freqmine - Makefile
 - [ ] raytrace - CMakeLists.txt
 - [x] swaptions - Makefile*
