@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -e
 sim=true
+native=true
 verbose=''
 while getopts Sv OPT; do
   case "$OPT" in
@@ -21,6 +22,10 @@ basenames="$basenames parsec-3.0-core.tar.gz"
 if "$sim"; then
   basenames="$basenames parsec-3.0-input-sim.tar.gz"
 fi
+
+if "$native"; then
+  basenames="$basenames parsec-3.0-input-native.tar.gz"
+fi 
 # Huge. Impractical for simulators, intended for real silicon.
 # parsec-3.0-input-native.tar.gz
 mkdir -p "$outdir"
