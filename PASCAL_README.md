@@ -95,6 +95,15 @@ Exemplo de saída
 
 ![TESS PASS](assets/test_pass.png)
 
+Possa ser o que o pacote **apps/vips** falhe no teste, no caso
+apenas remova os arquivos e recompile o pacote isoladamente.
+
+```bash
+rm -rf pkgs/apps/vips/inst/
+rm -rf pkgs/apps/vips/obj/
+parsecmgmt -a build -p vips -c gcc-pascal
+```
+
 ## adicionado o PASCAL
 
 Pacotes totalmente portados para pascal viewer
