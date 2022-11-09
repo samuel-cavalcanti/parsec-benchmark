@@ -43,7 +43,7 @@ tar -xf "pkgs/kernels/dedup/inputs/$simsmall";
 # LEMBRE-SE  de OLHAR O parâmetro NTHREADS, e verifica se o valor é __nt__
 
 # -t man é para informar que estou utilizando pascalops.h para isolar a região paralelizada
-#./$PASCALANALYZER -t man -c "$MY_CORES" --ragt acc --ipts " ${simsmall_run_args}" "$DEDUP" -o "dedup-pthreads.json"
+./$PASCALANALYZER -t man -c "$MY_CORES" --ragt acc --ipts " ${simsmall_run_args}" "$DEDUP" -o "dedup-pthreads.json" -v DEBUG
 
 # RODANDO COM GDB
 # LEMBRE-SE  de  (colocar a flag -g no arquivo /config/gcc-pascal.bldconf)
@@ -51,8 +51,8 @@ tar -xf "pkgs/kernels/dedup/inputs/$simsmall";
 
 
 # RODANDO SOLO 
-./"$DEDUP $simsmall_run_args"
+# ./"$DEDUP $simsmall_run_args"
 
 # # cleaing input
-# rm -rf  media.dat
-# rm -rf  output.dat.ddp
+rm -rf  media.dat
+rm -rf  output.dat.ddp
