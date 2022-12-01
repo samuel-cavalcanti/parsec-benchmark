@@ -25,6 +25,7 @@ simsmall="-ns 16 -sm 10000 -nt ${NTHREADS}"
 #native
 native="-ns 128 -sm 1000000 -nt ${NTHREADS}"
 
+pascal="-ns 32 -sm 2000000 -nt __nt__,-ns 32 -sm 3000000 -nt __nt__,-ns 32 -sm 4000000 -nt __nt__,-ns 32 -sm 5000000 -nt __nt__,-ns 32 -sm 6000000 -nt __nt__"
 
 # -ns == nSwaptions número de simulações
 # -sm == NUM_TRIALS
@@ -33,7 +34,7 @@ native="-ns 128 -sm 1000000 -nt ${NTHREADS}"
 # -nt == nThreads  número de Threads
 
 # tenho 8 threads, portanto
-MY_CORES=8;# colocar 32 caso usando o super computador
+MY_CORES=32;# colocar 32 caso usando o super computador
 
 # -t man é para informar que estou utilizando pascalops.h para isolar a região paralelizada
-./$PASCALANALYZER -t man -c 1:$MY_CORES --ipts "$native" "$SWAPTIONS" -o "swaptions-pthreads.json"
+./$PASCALANALYZER -t man -c 1:$MY_CORES --ipts "$pascal" "$SWAPTIONS" -o "swaptions-pthreads.json" -r 10

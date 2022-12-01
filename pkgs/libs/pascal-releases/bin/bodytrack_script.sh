@@ -19,29 +19,26 @@ NTHREADS="__nt__"
 # para os cores.
 
 
-# simsmall
 input_simsmall="input_simsmall.tar"
 arg_simsmall="sequenceB_1 4 1 1000 5 0 $NTHREADS"
 
-#native
+
 arg_native="sequenceB_261 4 261 4000 5 0 $NTHREADS"
 input_native="input_native.tar"
 
 
-# -ns == nSwaptions número de simulações
-# -sm == NUM_TRIALS
-
-#número de tentativas por simulaçãoimage.png
-# -nt == nThreads  número de Threads
+#pascal
+arg_pascal="sequenceB_1043 4 64 1000 10 0 $NTHREADS"
+input_pascal="input_pascal.tar"
 
 # tenho 8 threads, portanto
 MY_CORES="1:32";# colocar 32 caso usando o super computador
 
-tar -xf "pkgs/apps/bodytrack/inputs/$input_native";
+tar -xf "pkgs/apps/bodytrack/inputs/$input_pascal";
 
 
 # -t man é para informar que estou utilizando pascalops.h para isolar a região paralelizada
-./$PASCALANALYZER -t man -c $MY_CORES --ragt acc --ipts  " $arg_native"   $BODYTRACK -o "bodytrack-pthreads.json"
+./$PASCALANALYZER -t man -c $MY_CORES --ragt acc --ipts  " $arg_pascal"   $BODYTRACK -o "bodytrack-pthreads.json" -r 10
 
 
 # cleaing input
