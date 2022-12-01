@@ -49,6 +49,10 @@ static int omp_get_max_threads() {return 1;}
 static int omp_get_thread_num() {return 0;}
 #endif //_OPENMP
 
+#ifdef ENABLE_PASCAL_HOOKS
+#include <pascalops.h>
+#endif
+
 #define fast_rightsib_table_size 16
 int ***currentnodeiter;
 Fnode ***nodestack;
@@ -207,6 +211,10 @@ template <class T> void first_transform_FPTree_into_FPArray(FP_tree *fptree, T m
 	}
 	new_data_num[0][0] = sum_new_data_num;
 	T *ItemArray = (T *)local_buf->newbuf(1, new_data_num[0][0] * sizeof(T));
+
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_start(4);
+#endif
 #pragma omp parallel for
 	for (j = 0; j < workingthread; j ++) {
 		int kept_itemiter;
@@ -282,6 +290,9 @@ template <class T> void first_transform_FPTree_into_FPArray(FP_tree *fptree, T m
 			}
 		}
 	}
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_stop(4);
+#endif
 	fptree->ItemArray = (int *) ItemArray;
 }
 
@@ -529,6 +540,9 @@ void FP_tree::database_tiling(int workingthread)
 		for (j = local_num_hot_item; j < local_itemno; j ++)
 			origin[i][j] = 1;
 	}
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_start(5);
+#endif
 #pragma omp parallel for schedule(dynamic,1)
 	for (i = 0; i < mapfile->tablesize; i ++) {
 		int k, l;
@@ -623,6 +637,10 @@ void FP_tree::database_tiling(int workingthread)
 			currentnode->finalize();
 			thread_pos[thread] = currentpos;
 	}
+
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_stop(5);
+#endif
 	
 	for (i = 0; i < workingthread; i ++) {
 		thread_pos[i] = 0;
@@ -713,6 +731,9 @@ void FP_tree::database_tiling(int workingthread)
 			}
 		}
 
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_start(6);
+#endif
 #pragma omp parallel for
 	for (i = 0; i < workingthread; i ++) {
 		MapFileNode *current_mapfilenode;
@@ -738,6 +759,10 @@ void FP_tree::database_tiling(int workingthread)
 			current_mapfilenode = current_mapfilenode->next;
 		}
 	}
+
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_stop(6);
+#endif
 	delete [] tempntypeoffsetbase;
 	delete [] thread_pos;
 }
@@ -865,6 +890,9 @@ void FP_tree::scan1_DB(Data* fdat)
 			hot_node_index[i] = j;
 	}
 	hot_node_depth[0] = 0;
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_start(7);
+#endif
 	#pragma omp parallel for
 	for (int k = 0; k < workingthread; k ++) {
 		int i;
@@ -922,6 +950,9 @@ void FP_tree::scan1_DB(Data* fdat)
 			bran[k][i] = 0;
 		}
 	}
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_stop(7);
+#endif
 	mapfile->transform_list_table();
 	for (i = 0; i < hot_node_num; i ++)
 		ntypeidarray[i] = i;
@@ -1049,6 +1080,11 @@ void FP_tree::scan2_DB(int workingthread)
 	wtime(&tstart);
 	database_tiling(workingthread);
 	Fnode **local_hashtable = hashtable[0];
+
+
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_start(1);
+#endif
 #pragma omp parallel for schedule(dynamic,1)
 	for (j = 0; j < mergedworknum; j ++) {
 		int thread = omp_get_thread_num();
@@ -1154,6 +1190,10 @@ void FP_tree::scan2_DB(int workingthread)
 		rightsib_backpatch_count[thread][0] = local_rightsib_backpatch_count;
 		threadworkloadnum[thread] = localthreadworkloadnum;
 	}
+
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_stop(1);
+#endif
 	delete database_buf;
 	
 	for (int i = 0; i < workingthread; i ++) {
@@ -1162,7 +1202,12 @@ void FP_tree::scan2_DB(int workingthread)
 			temp += global_nodenum[i][j];
 	}
 	int totalnodes = cal_level_25(0);
-	
+
+
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_start(2);
+#endif
+
 #pragma omp parallel for
 	for (j = 0; j < workingthread; j ++) {
 		int local_rightsib_backpatch_count = rightsib_backpatch_count[j][0];
@@ -1170,6 +1215,11 @@ void FP_tree::scan2_DB(int workingthread)
 		for (int i = 0; i < local_rightsib_backpatch_count; i ++)
 			*local_rightsib_backpatch_stack[i] = NULL;
 	}
+
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_stop(2);
+#endif
+
 	wtime(&tend);
 //	printf("Creating the first tree from source file cost %f seconds\n", tend - tstart);
 //       printf("we have %d nodes in the initial FP tree\n", totalnodes);
@@ -1340,6 +1390,10 @@ int FP_tree::FP_growth_first(FSout* fout)
 			}
 		}
 
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_start(3);
+#endif
+
 		#pragma omp parallel for schedule(dynamic,1)
 		for(sequence=upperbound - 1; sequence>=lowerbound; sequence--)
 		{	int current, new_item_no, listlen;
@@ -1422,6 +1476,10 @@ int FP_tree::FP_growth_first(FSout* fout)
 			}
 			release_node_array_after_mining(sequence, thread, workingthread);
 		}
+
+#ifdef ENABLE_PASCAL_HOOKS
+  pascal_stop(3);
+#endif
 	}
 	 wtime(&tend);
 //	 printf("the major FP_growth cost %f vs %f seconds\n", tend - tstart, temp_time - tstart);

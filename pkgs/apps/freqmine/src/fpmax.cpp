@@ -148,7 +148,7 @@ int main(int argc, char **argv)
 #ifdef ENABLE_PARSEC_HOOKS
 	__parsec_roi_begin();
 #endif
-	fptree -> scan1_DB(fdat);
+	fptree->scan1_DB(fdat);
 	wtime(&tdatap);
 
 	fptree->scan2_DB(workingthread);
