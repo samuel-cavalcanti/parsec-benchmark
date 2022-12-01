@@ -113,7 +113,7 @@ Pacotes totalmente portados para pascal viewer
 - [x] facesim  - Makefile
 - [ ] ferret - Makefile
 - [x] fluidanimate - Makefile
-- [ ] freqmine - Makefile
+- [x] freqmine - Makefile
 - [ ] raytrace - CMakeLists.txt
 - [x] swaptions - Makefile*
 - [ ] vips - ./configure e Makefile (não achei o int main)
@@ -121,3 +121,19 @@ Pacotes totalmente portados para pascal viewer
 - [x] canneal - Makefile
 - [ ] dedup  - Makefile (erros de compilação com pascalops.h)
 - [ ] streamcluster - Makefile
+
+## Executados com input_pascal.tar
+
+- [x] blackscholes - possui entradas: blackscholes2_
+- [x] bodytrack - possui entradas: bodytrack_
+- [ ] facesim  - não encontrado entrada 
+- [ ] ferret - possui entradas: ferret_
+- [x] fluidanimate - possui entradas: fluidanimate_
+- [x] freqmine - possui entradas: freqmine_
+- [ ] raytrace - possui entradas: rtview_
+- [x] swaptions - possui entradas: swaptions_
+- [ ] vips - possui entradas:  vips_
+- [x] x264 - possui entradas:  x264_
+- [x] canneal - possui entradas: canneal_
+- [ ] dedup  - possui entradas:  dedup_
+- [ ] streamcluster - não encontrado entrada
