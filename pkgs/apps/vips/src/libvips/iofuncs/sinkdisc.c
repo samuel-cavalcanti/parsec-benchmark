@@ -63,6 +63,10 @@
 #include <dmalloc.h>
 #endif /*WITH_DMALLOC*/
 
+#ifdef ENABLE_PASCAL_HOOKS
+#include <pascalops.h>
+#endif
+
 /* A buffer we are going to write to disc in a background thread.
  */
 typedef struct _WriteBuffer {
@@ -512,6 +516,11 @@ vips_sink_disc( VipsImage *im, VipsRegionWrite write_fn, void *a )
 	write_init( &write, im, write_fn, a );
 
 	result = 0;
+	
+#ifdef ENABLE_PASCAL_HOOKS
+  	pascal_start(1);
+#endif
+
 	if( !write.buf || 
 		!write.buf_back || 
 		wbuffer_position( write.buf, 0, write.nlines ) ||
@@ -523,6 +532,9 @@ vips_sink_disc( VipsImage *im, VipsRegionWrite write_fn, void *a )
 			&write ) )  
 		result = -1;
 
+#ifdef ENABLE_PASCAL_HOOKS
+ 	pascal_stop(1);
+#endif
 	/* Just before allocate signalled stop, it set write.buf writing. We
 	 * need to wait for this write to finish. 
 	 *

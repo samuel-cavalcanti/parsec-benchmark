@@ -116,7 +116,7 @@ Pacotes totalmente portados para pascal viewer
 - [x] freqmine - Makefile
 - [ ] raytrace - CMakeLists.txt
 - [x] swaptions - Makefile*
-- [ ] vips - ./configure e Makefile (não achei o int main)
+- [x] vips - ./configure 
 - [x] x264 - Makefile
 - [x] canneal - Makefile
 - [ ] dedup  - Makefile (erros de compilação com pascalops.h)
@@ -126,7 +126,7 @@ Pacotes totalmente portados para pascal viewer
 
 - [x] blackscholes - possui entradas: blackscholes2_
 - [x] bodytrack - possui entradas: bodytrack_
-- [ ] facesim  - não encontrado entrada 
+- [ ] ~~facesim~~  - não encontrado entrada 
 - [ ] ferret - possui entradas: ferret_
 - [x] fluidanimate - possui entradas: fluidanimate_
 - [x] freqmine - possui entradas: freqmine_
@@ -136,4 +136,4 @@ Pacotes totalmente portados para pascal viewer
 - [x] x264 - possui entradas:  x264_
 - [x] canneal - possui entradas: canneal_
 - [ ] dedup  - possui entradas:  dedup_
-- [ ] streamcluster - não encontrado entrada
+- [ ] ~~streamcluster~~ - não encontrado entrada
