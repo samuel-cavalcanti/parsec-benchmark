@@ -38,7 +38,7 @@ tar -xf "pkgs/apps/bodytrack/inputs/$input_pascal";
 
 
 # -t man é para informar que estou utilizando pascalops.h para isolar a região paralelizada
-./$PASCALANALYZER -t man -c $MY_CORES --ragt acc --ipts  " $arg_pascal"   $BODYTRACK -o "bodytrack-pthreads.json" -r 10
+./$PASCALANALYZER -t man -c $MY_CORES --ragt acc --ipts  " $arg_pascal"   $BODYTRACK -o "bodytrack-pthreads_g.json" -r 10 -g
 
 
 # cleaing input

@@ -37,4 +37,4 @@ pascal="-ns 32 -sm 2000000 -nt __nt__,-ns 32 -sm 3000000 -nt __nt__,-ns 32 -sm 4
 MY_CORES=32;# colocar 32 caso usando o super computador
 
 # -t man é para informar que estou utilizando pascalops.h para isolar a região paralelizada
-./$PASCALANALYZER -t man -c 1:$MY_CORES --ipts "$pascal" "$SWAPTIONS" -o "swaptions-pthreads.json" -r 10
+./$PASCALANALYZER -t man -c 1:$MY_CORES --ipts "$pascal" "$SWAPTIONS" -o "swaptions-pthreads_g.json" -r 10 -g

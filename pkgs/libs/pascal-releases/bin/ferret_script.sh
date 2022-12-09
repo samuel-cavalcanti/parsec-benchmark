@@ -33,8 +33,8 @@ pascal_run_args="corel_5 lsh queries_5 10 20 ${NTHREADS} output.txt,corel_6 lsh 
 
 
 
-# tenho 8 threads, portanto
-MY_CORES="2:2";# colocar 32 caso usando o super computador
+
+MY_CORES="1:32";# colocar 32 caso usando o super computador
 
 tar -xf "pkgs/apps/ferret/inputs/$simsmall";
 

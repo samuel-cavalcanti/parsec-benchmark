@@ -46,7 +46,7 @@ tar -xf "pkgs/apps/fluidanimate/inputs/$pascal";
 # LEMBRE-SE  de OLHAR O parâmetro NTHREADS, e verifica se o valor é __nt__
 
 # -t man é para informar que estou utilizando pascalops.h para isolar a região paralelizada
-./$PASCALANALYZER -t man -c ${MY_CORES} --ragt acc --ipts " ${pascal_run_args}" " $FLUIDANIMATE" -o "fluidanimate-pthreads.json" -r 10
+./$PASCALANALYZER -t man -c ${MY_CORES} --ragt acc --ipts " ${pascal_run_args}" " $FLUIDANIMATE" -o "fluidanimate-pthreads_g.json" -r 10 -g
 
 
 # # cleaing input

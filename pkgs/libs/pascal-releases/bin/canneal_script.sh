@@ -45,7 +45,7 @@ tar -xf "pkgs/kernels/canneal/inputs/$pascal";
 # LEMBRE-SE  de OLHAR O parâmetro NTHREADS, e verifica se o valor é __nt__
 
 # -t man é para informar que estou utilizando pascalops.h para isolar a região paralelizada
-./$PASCALANALYZER -t man -c ${MY_CORES} --ragt acc --ipts " ${pascal_run_args}" "$CANNEAL" -o "canneal-pthreads.json"
+./$PASCALANALYZER -t man -c ${MY_CORES} --ragt acc --ipts " ${pascal_run_args}" "$CANNEAL" -o "canneal-pthreads_g.json" -g
 
 
 # # cleaing input
