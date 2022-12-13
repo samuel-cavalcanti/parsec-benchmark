@@ -145,6 +145,7 @@ int main(int argc, char **argv)
 	database_buf=new memory(60, 4194304L, 4194304L, 2);
 	fptree = (FP_tree*)fp_buf[0]->newbuf(1, sizeof(FP_tree));
 	fptree->init(-1, 0, 0);
+	FSout* fout;
 #ifdef ENABLE_PARSEC_HOOKS
 	__parsec_roi_begin();
 #endif
@@ -154,7 +155,7 @@ int main(int argc, char **argv)
 	fptree->scan2_DB(workingthread);
 	fdat->close();
 	if(fptree->itemno==0)return 0;
-	FSout* fout;
+	
 	if(argc==4)
 	{
 		fout = new FSout(argv[3]);
@@ -177,7 +178,7 @@ int main(int argc, char **argv)
 			fptree->generate_all(fptree->itemno, 0, fout);
 		
 		printLen();
-		return 0;
+		exit(0); //return 0;
 	}
 
 	fptree->FP_growth_first(fout);
