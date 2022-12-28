@@ -49,7 +49,7 @@ Sabendo que os pacotes foram compilados e os dados de entrada foram baixados.
 Portanto para executar um pacote do parsec com pascalanalyzer no NPAD, foram criados
 scripts na pasta [pascal-releases/bin](pkgs/libs/pascal-releases/bin/). Cada
 script representa um workload.
-Todos os workloads suportados estão na tabela: [Executados com input_pascal.tar](#executados-com-input_pascaltar):
+Todos os workloads suportados estão na tabela: [Executados com input_pascal.tar](PASCAL_README.md#executados-com-input_pascaltar):
 
 ```bash
 # Um exemplo de execução de um workload
