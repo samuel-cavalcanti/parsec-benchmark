@@ -61,11 +61,11 @@ git checkout pascal-parsec
 ## Testes de compilação
 
 Com o parcal sendo uma lib do parsec é possível compilar
-todos os pacotes do parsec com o pascal como dependência
-aqui estão  uma lista no momento de todos os pacotes que
+todos os pacotes do parsec com o pascal como dependência.
+Aqui estão  uma lista no momento de todos os pacotes que
 foram compilados com pascal sem apresentar erros.
 Lembando que esse pacotes não necessariamente tem o código fonte
-alterado para a realização da analise de região do código.
+alterado para a realização da analise de região.
 
 - [x] apps/blackscholes - Makefile
 - [x] apps/bodytrack - ./configure e Makefile
@@ -104,7 +104,14 @@ rm -rf pkgs/apps/vips/obj/
 parsecmgmt -a build -p vips -c gcc-pascal
 ```
 
-## adicionado o PASCAL
+Lembrando que para ter acesso a aplicação **parsecmgmt**, precisa carregar
+as variáveis de ambiente do arquivo [env.sh](env.sh):
+
+```bash
+source env.sh 
+```
+
+## adicionado o pascalops.h e identificado regiões paralelas 
 
 Pacotes totalmente portados para pascal viewer
 
@@ -129,10 +136,10 @@ Pacotes totalmente portados para pascal viewer
 - [ ] ~~facesim~~  - não encontrado entrada 
 - [ ] ferret - possui entradas: ferret_
 - [x] fluidanimate - possui entradas: fluidanimate_
-- [x] freqmine - possui entradas: freqmine_
+- [ ] freqmine - possui entradas: freqmine_ (Erro durante a execução, a aplicação não termina)
 - [ ] raytrace - possui entradas: rtview_
 - [x] swaptions - possui entradas: swaptions_
-- [ ] vips - possui entradas:  vips_
+- [x] vips - possui entradas:  vips_
 - [x] x264 - possui entradas:  x264_
 - [x] canneal - possui entradas: canneal_
 - [ ] dedup  - possui entradas:  dedup_
