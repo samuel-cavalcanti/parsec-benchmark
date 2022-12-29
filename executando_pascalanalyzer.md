@@ -30,16 +30,18 @@ No entanto, este projeto possui um outro conjunto de dados chamado **pascal-inpu
 
 ```bash
 # para baixar as entradas simulation-input, native-input
+# execute esse script na pasta raiz desse repositório
 ./get-inputs
 ```
 
 Para baixar o o conjunto de dados do pascal-input faça o download
-do arquivo mega [parsec-3.0-input-pascal.tar.gz](megalink) e extraia
-para a pasta desse diretório, ou execute o script [get-pascal-inputs](get-pascal-inputs.sh).
+do arquivo: [parsec-3.0-input-pascal.tar.gz](https://drive.google.com/file/d/1Mk5KlmGuT64Fr-Rznapo65jG2_FRYDB-/view) e extraia
+para a pasta raiz desse repositório, ou execute o script [get-pascal-inputs](get-pascal-inputs.sh).
 Caso o link do mega não esteja disponível, procure na pasta: **/mnt/beegfs/scratch/input-pascal/**  do super pc no NPAD.
 
 ```bash
 # para baixar as entrada pascal-input
+# execute esse script na pasta raiz desse repositório
 ./get-pascal-inputs
 ```
 
