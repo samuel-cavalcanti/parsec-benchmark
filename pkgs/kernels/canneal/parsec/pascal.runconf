@@ -1,0 +1,26 @@
+#!/bin/bash
+#
+# pascal.runconf - file containing information necessary to run a specific
+#                  program of the PARSEC benchmark suite
+#
+
+
+# This is the information which we need to run the program. Each package of the
+# benchmark suite has such a file with information that will be added to the
+# global configuration. All variables set in the global configuration files can
+# be referenced here.
+
+
+
+# SUBMIT: Command to use to submit the benchmark for execution.
+# change the default: time to pascalanalyzer
+submit="$PASCALANALYZER";
+
+pascal_run_args="__nt__ 15000 2000 2500000.nets 128,__nt__ 15000 2000 2500000.nets 256,__nt__ 15000 2000 2500000.nets 384,__nt__ 15000 2000 2500000.nets 512,__nt__ 15000 2000 2500000.nets 640";
+
+
+# Binary file to execute, relative to installation root
+run_exec="bin/canneal"
+
+# Arguments to use
+run_args="-t man -c 1:$NTHREADS --ragt acc --ipts \\\"${pascal_run_args}\\\" -o canneal-pthreads_g.json -g  -r 10"

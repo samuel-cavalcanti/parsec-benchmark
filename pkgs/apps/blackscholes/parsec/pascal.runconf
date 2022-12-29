@@ -1,0 +1,26 @@
+#!/bin/bash
+#
+# pascal.runconf - file containing information necessary to run a specific
+#                  program of the PARSEC benchmark suite
+#
+
+
+# This is the information which we need to run the program. Each package of the
+# benchmark suite has such a file with information that will be added to the
+# global configuration. All variables set in the global configuration files can
+# be referenced here.
+
+
+# Binary file to execute, relative to installation root
+run_exec="bin/blackscholes"
+
+
+# SUBMIT: Command to use to submit the benchmark for execution.
+# change the default: time to pascalanalyzer
+submit="$PASCALANALYZER";
+
+
+pascal_run_args="__nt__ in_5_10.txt prices.txt,__nt__ in_6_10.txt prices.txt,__nt__ in_7_10.txt prices.txt,__nt__ in_8_10.txt prices.txt,__nt__ in_9_10.txt prices.txt"
+
+# Arguments to use
+run_args="-t man -c 1:${NTHREADS} --ragt acc --ipts \\\" ${pascal_run_args} \\\" -o blackscholes-pthreads_g.json -r 10 -g"

@@ -1,0 +1,27 @@
+#!/bin/bash
+#
+# pascal.runconf - file containing information necessary to run a specific
+#                  program of the PARSEC benchmark suite
+#
+
+
+# This is the information which we need to run the program. Each package of the
+# benchmark suite has such a file with information that will be added to the
+# global configuration. All variables set in the global configuration files can
+# be referenced here.
+
+
+
+# SUBMIT: Command to use to submit the benchmark for execution.
+# change the default: time to pascalanalyzer
+submit="$PASCALANALYZER";
+
+# Binary file to execute, relative to installation root
+run_exec="bin/bodytrack"
+
+
+arg_pascal="sequenceB_1043 4 64 1000 10 0 __nt__"
+
+
+# Arguments to use
+run_args="-t man -c 1:$NTHREADS --ragt acc --ipts \\\" $arg_pascal \\\" -o bodytrack-pthreads_g.json -r 10 -g"

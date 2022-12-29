@@ -1,0 +1,44 @@
+#!/bin/bash
+#
+# pascal.runconf - file containing information necessary to run a specific
+#                  program of the PARSEC benchmark suite
+#
+
+
+# This is the information which we need to run the program. Each package of the
+# benchmark suite has such a file with information that will be added to the
+# global configuration. All variables set in the global configuration files can
+# be referenced here.
+
+
+generate_power_2_serie(){
+        local number_threads=$1
+
+        local value=1;
+        power_2_cores_list="1"
+      
+        for ((value=2; value <= number_threads; value*=2)) 
+        do
+            power_2_cores_list="$power_2_cores_list,$value";
+        done
+}
+
+
+
+#$ for counter in {1..255}; do ping -c 1 10.0.0.$counter; done
+
+# SUBMIT: Command to use to submit the benchmark for execution.
+# change the default: time to pascalanalyzer
+submit="$PASCALANALYZER";
+
+
+# Binary file to execute, relative to installation root
+run_exec="bin/fluidanimate"
+
+pascal_run_args="__nt__ 200 in_500K.fluid out.fluid,__nt__ 300 in_500K.fluid out.fluid,__nt__ 400 in_500K.fluid out.fluid,__nt__ 500 in_500K.fluid out.fluid"
+
+generate_power_2_serie $NTHREADS
+
+
+# Arguments to use
+run_args="-t man -c ${power_2_cores_list} --ragt acc --ipts \\\" $pascal_run_args \\\" -o fluidanimate-pthreads_g.json -r 10 -g"

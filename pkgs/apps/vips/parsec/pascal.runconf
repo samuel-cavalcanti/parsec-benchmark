@@ -1,0 +1,27 @@
+#!/bin/bash
+#
+# pascal.runconf - file containing information necessary to run a specific
+#                  program of the PARSEC benchmark suite
+#
+
+
+# This is the information which we need to run the program. Each package of the
+# benchmark suite has such a file with information that will be added to the
+# global configuration. All variables set in the global configuration files can
+# be referenced here.
+
+
+# Binary file to execute, relative to installation root
+run_exec="bin/vips"
+
+
+
+
+# SUBMIT: Command to use to submit the benchmark for execution.
+# change the default: time to pascalanalyzer
+submit="$PASCALANALYZER";
+
+pascal_run_args="im_benchmark orion_10800x10800.v output.v  --vips-concurrency=__nt__, im_benchmark orion_12600x12600.v output.v  --vips-concurrency=__nt__, im_benchmark orion_14400x14400.v output.v  --vips-concurrency=__nt__, im_benchmark orion_16200x16200.v output.v  --vips-concurrency=__nt__, im_benchmark orion_18000x18000.v output.v  --vips-concurrency=__nt__"
+
+# Arguments to use
+run_args="-t man -c 1:$NTHREADS --ragt acc --ipts \\\" $pascal_run_args \\\" -o vips-pthreads_g.json -r 10 -g"

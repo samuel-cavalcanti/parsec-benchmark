@@ -8,6 +8,7 @@
 source ${PARSECDIR}/config/gcc.bldconf
 
 PASCAL_LIB_PATH="$PARSECDIR/pkgs/libs/pascal-releases"
+PASCALANALYZER="$PASCAL_LIB_PATH/bin/pascalanalyzer"
 
 # Enable PASCAL hooks
 CFLAGS="${CFLAGS} -DENABLE_PASCAL_HOOKS -I$PASCAL_LIB_PATH/include"
