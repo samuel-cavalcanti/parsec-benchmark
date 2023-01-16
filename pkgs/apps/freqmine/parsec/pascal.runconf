@@ -1,0 +1,29 @@
+#!/bin/bash
+#
+# native.runconf - file containing information necessary to run a specific
+#                  program of the PARSEC benchmark suite
+#
+# Copyright (C) 2007 Princeton University
+# Written by Christian Bienia
+
+# This is the information which we need to run the program. Each package of the
+# benchmark suite has such a file with information that will be added to the
+# global configuration. All variables set in the global configuration files can
+# be referenced here.
+
+
+# Binary file to execute, relative to installation root
+run_exec="bin/freqmine"
+
+# SUBMIT: Command to use to submit the benchmark for execution.
+# change the default: time to pascalanalyzer
+submit="$PASCALANALYZER";
+
+
+pascal_run_args="webdocs_250k_05.dat 11000,webdocs_250k_06.dat 11000,webdocs_250k_07.dat 11000,webdocs_250k_08.dat 11000,webdocs_250k_09.dat 11000"
+
+# Arguments to use
+run_args="webdocs_250k.dat 11000"
+
+# Arguments to use
+run_args="-t man -c 1:$NTHREADS --ragt acc --ipts \\\" $pascal_run_args \\\" -o freqmine-pthreads_g.json -g"
