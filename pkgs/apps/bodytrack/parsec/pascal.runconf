@@ -24,4 +24,4 @@ arg_pascal="sequenceB_1043 4 64 1000 10 0 __nt__"
 
 
 # Arguments to use
-run_args="-t man -c 1:$NTHREADS --ragt acc --ipts \\\" $arg_pascal \\\" -o bodytrack-pthreads_g.json -r 10 -g"
+run_args="-t man -c 1:$NTHREADS --ragt acc --ipts \\\" $arg_pascal \\\" -o bodytrack-pthreads_g.json -g"

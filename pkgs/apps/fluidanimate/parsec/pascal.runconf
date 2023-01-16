@@ -41,4 +41,4 @@ generate_power_2_serie $NTHREADS
 
 
 # Arguments to use
-run_args="-t man -c ${power_2_cores_list} --ragt acc --ipts \\\" $pascal_run_args \\\" -o fluidanimate-pthreads_g.json -r 10 -g"
+run_args="-t man -c ${power_2_cores_list} --ragt acc --ipts \\\" $pascal_run_args \\\" -o fluidanimate-pthreads_g.json -g"

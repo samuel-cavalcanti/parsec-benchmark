@@ -20,7 +20,7 @@ MY_CORES="$NTHREADS";
 submit="$PASCALANALYZER";
 
 # Arguments to use
-run_args=" -t man -c 1:$MY_CORES --ipts \\\" ${pascal}\\\" -o \"swaptions-pthreads_g.json\" -r 10 -g"
+run_args=" -t man -c 1:$MY_CORES --ipts \\\" ${pascal}\\\" -o \"swaptions-pthreads_g.json\"  -g"
 
 # Binary file to execute, relative to installation root
 run_exec="bin/swaptions"

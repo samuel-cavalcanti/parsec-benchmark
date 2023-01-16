@@ -23,4 +23,4 @@ submit="$PASCALANALYZER";
 pascal_run_args="__nt__ in_5_10.txt prices.txt,__nt__ in_6_10.txt prices.txt,__nt__ in_7_10.txt prices.txt,__nt__ in_8_10.txt prices.txt,__nt__ in_9_10.txt prices.txt"
 
 # Arguments to use
-run_args="-t man -c 1:${NTHREADS} --ragt acc --ipts \\\" ${pascal_run_args} \\\" -o blackscholes-pthreads_g.json -r 10 -g"
+run_args="-t man -c 1:${NTHREADS} --ragt acc --ipts \\\" ${pascal_run_args} \\\" -o blackscholes-pthreads_g.json -g"

@@ -24,4 +24,4 @@ submit="$PASCALANALYZER";
 pascal_run_args="im_benchmark orion_10800x10800.v output.v  --vips-concurrency=__nt__, im_benchmark orion_12600x12600.v output.v  --vips-concurrency=__nt__, im_benchmark orion_14400x14400.v output.v  --vips-concurrency=__nt__, im_benchmark orion_16200x16200.v output.v  --vips-concurrency=__nt__, im_benchmark orion_18000x18000.v output.v  --vips-concurrency=__nt__"
 
 # Arguments to use
-run_args="-t man -c 1:$NTHREADS --ragt acc --ipts \\\" $pascal_run_args \\\" -o vips-pthreads_g.json -r 10 -g"
+run_args="-t man -c 1:$NTHREADS --ragt acc --ipts \\\" $pascal_run_args \\\" -o vips-pthreads_g.json -g"
